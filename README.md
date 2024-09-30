@@ -3,6 +3,9 @@
 This repository is for our 7th semester minor project titled **Advanced Stock Price Forecasting Using a Hybrid Model of Numerical and Textual 
 Analysis**.
 
+
+![Stock Markdet Illustration](https://github.com/user-attachments/assets/f5751f74-43c5-4045-aa9f-bb7abd19c1aa)
+
 ## Current Progress
 
 For our project, Advanced Stock Price Forecasting Using a Hybrid Model of Numerical and Textual 
