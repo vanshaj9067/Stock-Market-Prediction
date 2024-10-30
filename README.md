@@ -63,9 +63,9 @@ For easy visualization and data management, we are using the following tools:
 3. **Grafana Dashboard**: Providing a dynamic interface to view and interact with real-time forecasting results.
 
 *Images of the Grafana Dashboard will be added below:*
-   
+
 ![Grafana Dashboard - Detailed Analysis](https://github.com/user-attachments/assets/6de571a7-d831-439d-aac3-5bbc3751b960)
    <br>
    ![Grafana Dashboard - Overview 1](https://github.com/user-attachments/assets/c1b8d258-cb11-40de-8fce-aa9ca09bb133)
    <br>
-![Grafana Dashboard - Overview 2](https://github.com/user-attachments/assets/872095f8-5f1d-45fa-abd0-159e76c9eede)
+![Grafana Dashboard - Overview 2](https://github.com/user-attachments/assets/46502871-1e0d-4314-908e-d123d1e3db8d)
