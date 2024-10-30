@@ -1,0 +1,927 @@
+{
+  "__inputs": [
+    {
+      "name": "DS_STOCK_PRICE",
+      "label": "stock_price",
+      "description": "",
+      "type": "datasource",
+      "pluginId": "influxdb",
+      "pluginName": "InfluxDB"
+    }
+  ],
+  "__elements": {},
+  "__requires": [
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": "10.4.0"
+    },
+    {
+      "type": "datasource",
+      "id": "influxdb",
+      "name": "InfluxDB",
+      "version": "1.0.0"
+    },
+    {
+      "type": "panel",
+      "id": "text",
+      "name": "Text",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "timeseries",
+      "name": "Time series",
+      "version": ""
+    }
+  ],
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "description": "This dashboard is for Advanced Stock Price Forecasting Using a Hybrid Model of Numerical and Textual Analysis.",
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": null,
+  "links": [],
+  "panels": [
+    {
+      "collapsed": true,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 11,
+      "panels": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_STOCK_PRICE}"
+          },
+          "gridPos": {
+            "h": 7,
+            "w": 24,
+            "x": 0,
+            "y": 9
+          },
+          "id": 7,
+          "options": {
+            "code": {
+              "language": "html",
+              "showLineNumbers": false,
+              "showMiniMap": false
+            },
+            "content": "<!DOCTYPE html>\n<html lang=\"en\">\n\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Stock Market Prediction</title>\n    <style>\n        /* This style block contains CSS rules to style the body and elements within the page */\n        body {\n            font-family: Arial, sans-serif;\n            /* Sets the font style for the body */\n            margin: 0;\n            /* Removes default margin */\n            padding: 20px;\n            /* Adds padding around the body */\n            text-align: center;\n            /* Centers text within the body */\n        }\n\n        h1,\n        h4 {\n            margin: 20px 0;\n            /* Adds vertical margin to heading elements */\n        }\n\n        table {\n            margin: 0 auto;\n            /* Centers the table on the page */\n            border-collapse: collapse;\n            /* Merges table borders for a cleaner look */\n            width: 80%;\n            /* Sets the table width to 80% of the container */\n            max-width: 1000px;\n            /* Sets the maximum width of the table */\n        }\n\n        th,\n        td {\n            border: 1px solid #ddd;\n            /* Defines border style for table headers and cells */\n            padding: 10px;\n            /* Adds padding within each table cell */\n            text-align: left;\n            /* Aligns text to the left in table cells */\n        }\n\n        th {\n            background-color: #f2f2f2;\n            /* Sets a light background color for table headers */\n            font-weight: bold;\n            /* Makes table headers bold */\n        }\n\n        .company-logo {\n            width: 40px;\n            /* Sets width of the company logo */\n            height: 40px;\n            /* Sets height of the company logo */\n            margin-right: 10px;\n            /* Adds spacing to the right of the logo */\n            vertical-align: middle;\n            /* Vertically aligns the logo with the text */\n        }\n\n        .left-aligned {\n            text-align: left;\n            /* Aligns bullet points to the left */\n            margin: 0;\n            /* Removes margin for the list */\n        }\n\n        .company-info {\n            text-align: center;\n            /* Centers the logo and company name */\n            margin-bottom: 20px;\n            /* Adds spacing below company info */\n        }\n\n        .tcs-spacing div {\n            margin-top: 10px;\n            /* Adjust the value to increase or decrease spacing */\n        }\n    </style>\n</head>\n\n<body>\n\n    <h1>Stock Market Prediction</h1>\n    <h4>This dashboard is for our 7th semester minor project titled <b>Advanced Stock Price Forecasting Using a Hybrid\n            Model of Numerical and Textual Analysis</b>.</h4>\n\n    <table>\n        <thead>\n            <tr>\n                <th>Company</th>\n                <th>Description</th>\n                <th>Data Range</th>\n                <th>Dataset Shape</th>\n                <th>Starting Stock Date</th>\n                <th>Current Stock Date</th>\n                <th>Starting Stock Price</th>\n                <th>Current Stock Price</th>\n            </tr>\n        </thead>\n        <tbody>\n            <!-- Each table row represents a different company with its stock information -->\n\n            <!-- Google -->\n            <tr>\n                <td>\n                    <div class=\"company-info\">\n                        <img src=\"https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-suite-everything-you-need-know-about-google-newest-0.png\"\n                            class=\"company-logo\" alt=\"Google Logo\">\n                        <div>Alphabet Inc. (Google) [GOOG]</div> <!-- Displays company name -->\n                    </div>\n                </td>\n                <td>Specializes in Internet-related services and products, including search engines, online advertising,\n                    and cloud computing.</td>\n                <td>2014-03-27 : 2024-10-17</td>\n                <td>(2659, 5)</td>\n                <td>2014-03-27</td>\n                <td>2024-10-17</td>\n                <td>$27.8542</td>\n                <td>$164.51</td>\n            </tr>\n\n            <!-- Amazon -->\n            <tr>\n                <td>\n                    <div class=\"company-info\">\n                        <img src=\"https://pngimg.com/uploads/amazon/amazon_PNG5.png\" class=\"company-logo\"\n                            alt=\"Amazon Logo\">\n                        <div>Amazon.com Inc. [AMZN]</div> <!-- Displays company name -->\n                    </div>\n                </td>\n                <td>Started as an online bookstore, now a leader in e-commerce and cloud computing through AWS.</td>\n                <td>1997-05-16 : 2024-10-17</td>\n                <td>(6901, 5)</td>\n                <td>1997-05-16</td>\n                <td>2024-10-17</td>\n                <td>$0.0863</td>\n                <td>$187.53</td>\n            </tr>\n\n            <!-- Apple -->\n            <tr>\n                <td>\n                    <div class=\"company-info\">\n                        <img src=\"https://th.bing.com/th/id/R.0ac491574e7ddb71dc2cab65a8bb501f?rik=5NzURUJ1L37UYg&riu=http%3a%2f%2fpurepng.com%2fpublic%2fuploads%2flarge%2fpurepng.com-apple-logologobrand-logoiconslogos-251519938788qhgdl.png&ehk=kQ%2bTI4imrP%2fg9UWIfehFMJOqAn1A3RQTROHV%2f1ORknk%3d&risl=&pid=ImgRaw&r=0\"\n                            class=\"company-logo\" alt=\"Apple Logo\">\n                        <div>Apple Inc. [AAPL]</div> <!-- Displays company name -->\n                    </div>\n                </td>\n                <td>Renowned for innovative consumer electronics, software, and services, including the iPhone and Mac\n                    computers.</td>\n                <td>1980-12-12 : 2024-10-17</td>\n                <td>(11053, 5)</td>\n                <td>1980-12-12</td>\n                <td>2024-10-17</td>\n                <td>$0.0992</td>\n                <td>$232.15</td>\n            </tr>\n\n            <!-- Meta Platforms -->\n            <tr>\n                <td>\n                    <div class=\"company-info\">\n                        <img src=\"https://static.vecteezy.com/system/resources/previews/024/273/862/original/meta-logo-transparent-free-png.png\"\n                            class=\"company-logo\" alt=\"Meta Logo\">\n                        <div>Meta Platforms [META]</div>\n                    </div>\n                </td>\n                <td>Owner of Facebook, a global leader in social media and digital advertising.</td>\n                <td>2012-05-18 : 2024-10-17</td>\n                <td>(3124, 5)</td>\n                <td>2012-05-18</td>\n                <td>2024-10-17</td>\n                <td>$38.1174</td>\n                <td>$576.93</td>\n            </tr>\n            <!-- Microsoft -->\n            <tr>\n                <td>\n                    <div class=\"company-info\">\n                        <img src=\"https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg\"\n                            class=\"company-logo\" alt=\"Microsoft Logo\">\n                        <div>Microsoft Corp. [MSFT]</div>\n                    </div>\n                </td>\n                <td>A leading developer of software, consumer electronics, and personal computers.</td>\n                <td>1986-03-13 : 2024-10-17</td>\n                <td>(9728, 5)</td>\n                <td>1986-03-13</td>\n                <td>2024-10-17</td>\n                <td>$0.0603</td>\n                <td>$416.72</td>\n            </tr>\n            <!-- Netflix -->\n            <tr>\n                <td>\n                    <div class=\"company-info\">\n                        <img src=\"https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg\"\n                            class=\"company-logo\" alt=\"Netflix Logo\">\n                        <div>Netflix Inc. [NFLX]</div>\n                    </div>\n                </td>\n                <td>Global streaming entertainment service with a vast library of TV series and films.</td>\n                <td>2002-05-23 : 2024-10-17</td>\n                <td>(5640, 5)</td>\n                <td>2002-05-23</td>\n                <td>2024-10-17</td>\n                <td>$1.1964</td>\n                <td>$687.65</td>\n            </tr>\n            <!-- Nvidia -->\n            <tr>\n                <td>\n                    <div class=\"company-info\">\n                        <img src=\"https://cdn4.iconfinder.com/data/icons/logos-and-brands/512/235_Nvidia_logo-512.png\"\n                            class=\"company-logo\" alt=\"Nvidia Logo\">\n                        <div>Nvidia Corp. [NVDA]</div>\n                    </div>\n                </td>\n                <td>Specializes in graphics processing units and AI technology.</td>\n                <td>1999-01-22 : 2024-10-17</td>\n                <td>(6477, 5)</td>\n                <td>1999-01-22</td>\n                <td>2024-10-17</td>\n                <td>$0.0377</td>\n                <td>$136.93</td>\n            </tr>\n            <!-- Tata Consultancy Services (TCS) -->\n            <tr>\n                <td>\n                    <div class=\"company-info tcs-spacing\">\n                        <img src=\"https://companieslogo.com/img/orig/TCS.NS-7401f1bd.png?t=1631949260\"\n                            class=\"company-logo\" alt=\"TCS Logo\">\n                        <div>Tata Consultancy Services [TCS]</div>\n                    </div>\n\n                </td>\n                <td>Leading global IT services, consulting, and business solutions provider.</td>\n                <td>2013-11-01 : 2024-10-17</td>\n                <td>(2758, 5)</td>\n                <td>2013-11-01</td>\n                <td>2024-10-17</td>\n                <td>$543.0</td>\n                <td>$11.8</td>\n            </tr>\n        </tbody>\n    </table>\n\n    <div>\n        <h2>Current Progress</h2>\n        <p>For the project, Advanced Stock Price Forecasting Using a Hybrid Model of Numerical and Textual Analysis,\n            substantial progress has been made across different areas. Currently, the team is analyzing relevant\n            research papers and exploring the most suitable dataset for their needs. Since the project involves\n            time-series data, they are learning to use Influx DB for efficient data storage, which will allow them to\n            handle large-scale time-series data effectively.</p>\n        <ul class=\"left-aligned\">\n            <li>Analyzing research papers and exploring datasets</li>\n            <li>Learning Influx DB for time-series data storage</li>\n            <li>Focusing on Natural Language Processing (NLP) for financial news analysis</li>\n            <li>Evaluating tools like NLTK and spaCy</li>\n            <li>Learning Grafana for data visualization and dashboards</li>\n            <li>Studying advanced machine learning algorithms: ARIMA, LSTM, and Transformers</li>\n            <li>Implementing a hybrid model that combines numerical and textual analysis techniques</li>\n        </ul>\n    </div>\n    <br>\n    <div>\n        <h2>1. Historical Data</h2>\n        <p>The default range is set to: <b>2014-03-27 00:00:00 : 2024-10-17 00:00:00</b></p>\n        <p>All company data is present for this interval.</p>\n    </div>\n    <br>\n    <div>\n        <h2>2. Model Prediction</h2>\n        <ol class=\"left-aligned\">\n            <li>Model output will be displayed here</li>\n            <li>Numerical Analysis: Description of numerical analysis methods used in the project.</li>\n            <li>Time-series Analysis: Description of time-series analysis techniques.</li>\n            <li>Predictive Modeling: Overview of predictive modeling approaches.</li>\n        </ol>\n    </div>\n    <br>\n    <div>\n        <h2>3. Textual Analysis</h2>\n        <ol class=\"left-aligned\">\n            <li>Text analysis graphs/data will be added here</li>\n            <li>Description of textual analysis techniques used.</li>\n            <li>Tools and libraries utilized for NLP.</li>\n        </ol>\n    </div>\n\n    <br>\n    <div>\n        <h2>4. Hybrid Model</h2>\n        <p>Description of the hybrid model used for stock price prediction, integrating both numerical and textual\n            analysis.</p>\n        <ol class=\"left-aligned\">\n            <li>Integration of numerical analysis techniques with textual analysis.</li>\n            <li>Utilization of advanced machine learning algorithms.</li>\n            <li>Emphasis on predictive accuracy and performance metrics.</li>\n            <li>Real-time data processing and analysis capabilities.</li>\n        </ol>\n    </div>\n</body>\n\n</html>",
+            "mode": "html"
+          },
+          "pluginVersion": "10.4.0",
+          "title": "Dashboard Description and Datasets Information",
+          "type": "text"
+        }
+      ],
+      "title": "Dashboard and Dataset Description",
+      "type": "row"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 1
+      },
+      "id": 2,
+      "panels": [],
+      "title": "Numerical Analysis",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "${DS_STOCK_PRICE}"
+      },
+      "description": "This panel displays the stock prices of a company based on selected ticker symbol.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "currencyUSD"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "A"
+            },
+            "properties": [
+              {
+                "id": "custom.drawStyle",
+                "value": "line"
+              },
+              {
+                "id": "custom.lineStyle",
+                "value": {
+                  "dash": [
+                    10,
+                    10
+                  ],
+                  "fill": "dash"
+                }
+              },
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "yellow",
+                  "mode": "fixed"
+                }
+              },
+              {
+                "id": "displayName",
+                "value": "Opening Price"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "B"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "blue",
+                  "mode": "fixed"
+                }
+              },
+              {
+                "id": "displayName",
+                "value": "Low Price"
+              },
+              {
+                "id": "custom.lineStyle",
+                "value": {
+                  "dash": [
+                    10,
+                    10
+                  ],
+                  "fill": "dash"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "C"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "red",
+                  "mode": "fixed"
+                }
+              },
+              {
+                "id": "displayName",
+                "value": "High Price"
+              },
+              {
+                "id": "custom.lineStyle",
+                "value": {
+                  "dash": [
+                    10,
+                    10
+                  ],
+                  "fill": "dash"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "D"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Closing Price"
+              },
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "green",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 24,
+        "x": 0,
+        "y": 2
+      },
+      "id": 1,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_STOCK_PRICE}"
+          },
+          "query": "from(bucket: \"stock_price\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"stock_price\")\r\n  |> filter(fn: (r) => r[\"Ticker\"] == \"${Company}\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"open\")",
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_STOCK_PRICE}"
+          },
+          "hide": false,
+          "query": "from(bucket: \"stock_price\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"stock_price\")\r\n  |> filter(fn: (r) => r[\"Ticker\"] == \"${Company}\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"low\")",
+          "refId": "B"
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_STOCK_PRICE}"
+          },
+          "hide": false,
+          "query": "from(bucket: \"stock_price\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"stock_price\")\r\n  |> filter(fn: (r) => r[\"Ticker\"] == \"${Company}\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"high\")",
+          "refId": "C"
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_STOCK_PRICE}"
+          },
+          "hide": false,
+          "query": "from(bucket: \"stock_price\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"stock_price\")\r\n  |> filter(fn: (r) => r[\"Ticker\"] == \"${Company}\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"close\")",
+          "refId": "D"
+        }
+      ],
+      "title": "Stock Prices for ${Company}",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "${DS_STOCK_PRICE}"
+      },
+      "description": "This panel shows the opening Price of the stock.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "yellow",
+            "mode": "fixed"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "displayName": "Opening Price for ${Company}",
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "currencyUSD"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 11
+      },
+      "id": 3,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_STOCK_PRICE}"
+          },
+          "query": "from(bucket: \"stock_price\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"stock_price\")\r\n  |> filter(fn: (r) => r[\"Ticker\"] == \"${Company}\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"open\")",
+          "refId": "A"
+        }
+      ],
+      "title": "Opening Price for ${Company}",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "${DS_STOCK_PRICE}"
+      },
+      "description": "This panel shows the Low Price of the stock.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "blue",
+            "mode": "fixed"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "displayName": "Low Price for ${Company}",
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "currencyUSD"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 11
+      },
+      "id": 4,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_STOCK_PRICE}"
+          },
+          "query": "from(bucket: \"stock_price\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"stock_price\")\r\n  |> filter(fn: (r) => r[\"Ticker\"] == \"${Company}\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"low\")",
+          "refId": "A"
+        }
+      ],
+      "title": "Low Price for ${Company}",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "${DS_STOCK_PRICE}"
+      },
+      "description": "This panel shows the high Price of the stock.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "red",
+            "mode": "fixed"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "displayName": "High Price for ${Company}",
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "currencyUSD"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 19
+      },
+      "id": 5,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_STOCK_PRICE}"
+          },
+          "query": "from(bucket: \"stock_price\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"stock_price\")\r\n  |> filter(fn: (r) => r[\"Ticker\"] == \"${Company}\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"high\")",
+          "refId": "A"
+        }
+      ],
+      "title": "High Price for ${Company}",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "${DS_STOCK_PRICE}"
+      },
+      "description": "This panel shows the Closing Price of the stock.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "#73BF69",
+            "mode": "fixed"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "displayName": "Closing Price for ${Company}",
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "currencyUSD"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 19
+      },
+      "id": 6,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_STOCK_PRICE}"
+          },
+          "query": "from(bucket: \"stock_price\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"stock_price\")\r\n  |> filter(fn: (r) => r[\"Ticker\"] == \"${Company}\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"close\")",
+          "refId": "A"
+        }
+      ],
+      "title": "Closing Price for ${Company}",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "${DS_STOCK_PRICE}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "purple",
+            "mode": "fixed"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "bars",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "displayName": "Volume for ${Company}",
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 24,
+        "x": 0,
+        "y": 27
+      },
+      "id": 12,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_STOCK_PRICE}"
+          },
+          "query": "from(bucket: \"stock_price\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"stock_price\")\r\n  |> filter(fn: (r) => r[\"Ticker\"] == \"${Company}\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"volume\")",
+          "refId": "A"
+        }
+      ],
+      "title": "Volume for ${Company}",
+      "type": "timeseries"
+    },
+    {
+      "collapsed": true,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 34
+      },
+      "id": 8,
+      "panels": [],
+      "title": "Model Prediction",
+      "type": "row"
+    },
+    {
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 35
+      },
+      "id": 10,
+      "title": "Textual Analysis",
+      "type": "row"
+    },
+    {
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 36
+      },
+      "id": 9,
+      "title": "Hybrid Model",
+      "type": "row"
+    }
+  ],
+  "refresh": "",
+  "schemaVersion": 39,
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "selected": false,
+          "text": "GOOG",
+          "value": "GOOG"
+        },
+        "description": "Choose ticker symbol from here to see the corresponding stock prices",
+        "hide": 1,
+        "includeAll": false,
+        "label": "Ticker Symbol",
+        "multi": false,
+        "name": "Company",
+        "options": [
+          {
+            "selected": true,
+            "text": "GOOG",
+            "value": "GOOG"
+          },
+          {
+            "selected": false,
+            "text": "AAPL",
+            "value": "AAPL"
+          },
+          {
+            "selected": false,
+            "text": "AMZN",
+            "value": "AMZN"
+          },
+          {
+            "selected": false,
+            "text": "META",
+            "value": "META"
+          },
+          {
+            "selected": false,
+            "text": "MSFT",
+            "value": "MSFT"
+          },
+          {
+            "selected": false,
+            "text": "NFLX",
+            "value": "NFLX"
+          },
+          {
+            "selected": false,
+            "text": "NVDA",
+            "value": "NVDA"
+          },
+          {
+            "selected": false,
+            "text": "TCS",
+            "value": "TCS"
+          }
+        ],
+        "query": "GOOG, AAPL, AMZN, META, MSFT, NFLX, NVDA, TCS",
+        "queryValue": "",
+        "skipUrlSync": false,
+        "type": "custom"
+      }
+    ]
+  },
+  "time": {
+    "from": "2014-03-26T18:30:00.000Z",
+    "to": "2024-10-16T18:30:00.000Z"
+  },
+  "timepicker": {},
+  "timezone": "browser",
+  "title": "Stock Market Prediction",
+  "uid": "be2cl3llhrmkgd",
+  "version": 42,
+  "weekStart": ""
+}
