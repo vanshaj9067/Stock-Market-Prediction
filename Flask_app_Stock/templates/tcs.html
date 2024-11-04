@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TCS Stock Prediction</title>
+</head>
+<body>
+    <h1>TCS Stock Price Prediction</h1>
+    <form method="post">
+        <label>Open: <input type="number" name="open"  min="7.5" max="703.05"></label><br>
+        <label>High: <input type="number" name="high"  min="8.02" max="706.05"></label><br>
+        <label>Low: <input type="number" name="low"  min="7.5" max="684.0"></label><br>
+        <label>Volume: <input type="number" name="volume"  min="2001" max="3938293"></label><br>
+        <button type="submit">Predict Close Price</button>
+    </form>
+    {% if close_value %}
+        <h2>Predicted Close Value: {{ close_value }}</h2>
+        <p>Open: {{ open }}</p>
+        <p>High: {{ high }}</p>
+        <p>Low: {{ low }}</p>
+        <p>Volume: {{ volume }}</p>
+    {% endif %}
+
+    <button onclick="window.location.href='/'">Back to Home</button>
+</body>
+</html>

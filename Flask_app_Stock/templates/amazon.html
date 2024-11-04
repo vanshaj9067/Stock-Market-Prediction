@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Amazon Stock Prediction</title>
+</head>
+<body>
+    <h1>Amazon Stock Price Prediction</h1>
+    <form method="post">
+        <label>Open: <input type="number" name="open"  min="0.0702" max="200.09"></label><br>
+        <label>High: <input type="number" name="high"  min="0.0722" max="201.2"></label><br>
+        <label>Low: <input type="number" name="low"  min="0.0655" max="199.045"></label><br>
+        <label>Volume: <input type="number" name="volume"  min="9744000" max="2086584000"></label><br>
+        <button type="submit">Predict Close Price</button>
+    </form>
+    {% if close_value %}
+        <h2>Predicted Close Value: {{ close_value }}</h2>
+        <p>Open: {{ open }}</p>
+        <p>High: {{ high }}</p>
+        <p>Low: {{ low }}</p>
+        <p>Volume: {{ volume }}</p>
+    {% endif %}
+
+    <button onclick="window.location.href='/'">Back to Home</button>
+
+</body>
+</html>
+>

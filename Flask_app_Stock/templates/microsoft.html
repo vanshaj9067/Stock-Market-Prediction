@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Microsoft Stock Prediction</title>
+</head>
+<body>
+    <h1>Microsoft Stock Price Prediction</h1>
+    <form method="post">
+        <label>Open: <input type="number" name="open"  min="0.0549" max="466.1696"></label><br>
+        <label>High: <input type="number" name="high"  min="0.0571" max="467.5172"></label><br>
+        <label>Low: <input type="number" name="low"  min="0.0549" max="463.6341"></label><br>
+        <label>Volume: <input type="number" name="volume"  min="2304000" max="1031788800"></label><br>
+        <button type="submit">Predict Close Price</button>
+    </form>
+    {% if close_value %}
+        <h2>Predicted Close Value: {{ close_value }}</h2>
+        <p>Open: {{ open }}</p>
+        <p>High: {{ high }}</p>
+        <p>Low: {{ low }}</p>
+        <p>Volume: {{ volume }}</p>
+    {% endif %}
+
+    <button onclick="window.location.href='/'">Back to Home</button>
+</body>
+</html>

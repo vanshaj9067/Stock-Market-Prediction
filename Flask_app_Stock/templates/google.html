@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Google Stock Prediction</title>
+</head>
+<body>
+    <h1>Google Stock Price Prediction</h1>
+    <form method="post">
+        <label>Open: <input type="number" name="open"  min="24.6715" max="191.4939"></label><br>
+        <label>High: <input type="number" name="high"  min="24.7377" max="193.0518"></label><br>
+        <label>Low: <input type="number" name="low"  min="24.3179" max="190.3654"></label><br>
+        <label>Volume: <input type="number" name="volume"  min="158000" max="223298860"></label><br>
+        <button type="submit">Predict Close Price</button>
+    </form>
+    {% if close_value %}
+        <h2>Predicted Close Value: {{ close_value }}</h2>
+        <p>Open: {{ open }}</p>
+        <p>High: {{ high }}</p>
+        <p>Low: {{ low }}</p>
+        <p>Volume: {{ volume }}</p>
+    {% endif %}
+
+    <button onclick="window.location.href='/'">Back to Home</button>
+</body>
+</html>

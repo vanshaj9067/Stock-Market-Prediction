@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>META Stock Prediction</title>
+</head>
+<body>
+    <h1>META Stock Price Prediction</h1>
+    <form method="post">
+        <label>Open: <input type="number" name="open"  min="18.0259" max="598.22"></label><br>
+        <label>High: <input type="number" name="high"  min="18.2153" max="602.95"></label><br>
+        <label>Low: <input type="number" name="low"  min="17.4975" max="589.96"></label><br>
+        <label>Volume: <input type="number" name="volume"  min="5462550" max="573576400"></label><br>
+        <button type="submit">Predict Close Price</button>
+    </form>
+    {% if close_value %}
+        <h2>Predicted Close Value: {{ close_value }}</h2>
+        <p>Open: {{ open }}</p>
+        <p>High: {{ high }}</p>
+        <p>Low: {{ low }}</p>
+        <p>Volume: {{ volume }}</p>
+    {% endif %}
+
+    <button onclick="window.location.href='/'">Back to Home</button>
+</body>
+</html>
