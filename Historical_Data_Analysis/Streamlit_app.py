@@ -309,7 +309,7 @@ def display_company_data_table():
 
 
 # Directory containing the preprocessed datasets
-DATASET_DIR = "Preprocessed Dataset"
+DATASET_DIR = "Preprocessed%20Dataset"
 
 
 # Function to load dataset based on ticker symbol and display its information
