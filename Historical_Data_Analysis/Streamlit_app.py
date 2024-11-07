@@ -337,6 +337,8 @@ def display_dataset_info(ticker):
         "NVDA": "Nvidia Corp.",
         "TCS": "Tata Consultancy Services",
     }
+    st.write("Files in Preprocessed_Dataset:", os.listdir(DATASET_DIR))
+
 
     # Display company name
     company_name = company_info.get(ticker, "Unknown Company")
