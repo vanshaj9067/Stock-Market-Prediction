@@ -324,6 +324,15 @@ def display_dataset_info(ticker):
 
         return
 
+    # Check current working directory
+    st.write("Current working directory:", os.getcwd())
+    
+    # Check if the Preprocessed_Dataset directory exists
+    if os.path.exists(DATASET_DIR):
+        st.write(f"Files in {DATASET_DIR}:", os.listdir(DATASET_DIR))
+    else:
+        st.error(f"Directory '{DATASET_DIR}' does not exist.")
+
     # Load the dataset with 'date' as the index
     df = pd.read_csv(dataset_path, index_col="date")
     df.index.name = "Date"  # Rename index label to 'Date'
