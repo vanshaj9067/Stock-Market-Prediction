@@ -320,6 +320,8 @@ def display_dataset_info(ticker):
     # Check if file exists
     if not os.path.isfile(dataset_path):
         st.error(f"No dataset found for ticker symbol: {ticker}")
+        st.write("Files in Preprocessed_Dataset:", os.listdir(DATASET_DIR))
+
         return
 
     # Load the dataset with 'date' as the index
