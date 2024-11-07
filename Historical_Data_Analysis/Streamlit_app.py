@@ -320,7 +320,6 @@ def display_dataset_info(ticker):
     # Check if file exists
     if not os.path.isfile(dataset_path):
         st.error(f"No dataset found for ticker symbol: {ticker}")
-        st.write("Files in Preprocessed_Dataset:", os.listdir(DATASET_DIR))
 
         return
 
@@ -348,7 +347,6 @@ def display_dataset_info(ticker):
         "NVDA": "Nvidia Corp.",
         "TCS": "Tata Consultancy Services",
     }
-    st.write("Files in Preprocessed_Dataset:", os.listdir(DATASET_DIR))
 
 
     # Display company name
