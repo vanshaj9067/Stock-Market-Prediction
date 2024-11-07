@@ -317,6 +317,20 @@ def display_dataset_info(ticker):
     # Define the dataset file path
     dataset_path = os.path.join(DATASET_DIR, f"Preprocessed_{ticker}_Dataset.csv")
 
+    # Print working directory
+    working_directory = os.getcwd()
+    st.write(f"Current Working Directory: {working_directory}")
+
+    # Check if the requested directory exists
+    if not os.path.exists(DATASET_DIR):
+        st.error(f"Directory '{DATASET_DIR}' does not exist.")
+    else:
+        st.write(f"Directory '{DATASET_DIR}' exists.")
+
+    # List all files and directories in the working directory
+    st.write(f"Files in the current directory: {os.listdir(working_directory)}")
+    st.write(f"Files in '{DATASET_DIR}': {os.listdir(DATASET_DIR)}")
+
     # Check if file exists
     if not os.path.isfile(dataset_path):
         st.error(f"No dataset found for ticker symbol: {ticker}")
