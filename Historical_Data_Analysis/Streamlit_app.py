@@ -324,14 +324,14 @@ def display_dataset_info(ticker):
 
         return
 
-    # Check current working directory
-    st.write("Current working directory:", os.getcwd())
+   # Absolute path check
+    st.write("Absolute path of dataset directory:", os.path.abspath(DATASET_DIR))
     
-    # Check if the Preprocessed_Dataset directory exists
-    if os.path.exists(DATASET_DIR):
-        st.write(f"Files in {DATASET_DIR}:", os.listdir(DATASET_DIR))
-    else:
+    # Check if directory exists
+    if not os.path.exists(DATASET_DIR):
         st.error(f"Directory '{DATASET_DIR}' does not exist.")
+    else:
+        st.write(f"Files in '{DATASET_DIR}':", os.listdir(DATASET_DIR))
 
     # Load the dataset with 'date' as the index
     df = pd.read_csv(dataset_path, index_col="date")
