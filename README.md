@@ -1,6 +1,6 @@
 # Stock-Market-Prediction
 
-This repository is for our 7th-semester minor project titled **Advanced Stock Price Forecasting Using a Hybrid Model of Numerical and Textual Analysis**.
+This repository is for our 7th-semester minor project titled **Advanced Stock Price Forecasting Using a Hybrid Model of Numerical and Textual Analysis**
 
 ![Stock Market Illustration](https://github.com/user-attachments/assets/f5751f74-43c5-4045-aa9f-bb7abd19c1aa)
 
