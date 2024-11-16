@@ -1,0 +1,28 @@
+Partial Stock Prices YAHOO Links: https://finance.yahoo.com/
+
+Textual and Hybrid Data: https://www.kaggle.com/datasets/kianso/news-stock-price
+
+Complete Stocks
+
+
+Alphabet/GOOG Stock: https://www.macrotrends.net/stocks/charts/GOOG/google/stock-price-history
+
+AAPL Stock: https://www.macrotrends.net/stocks/charts/AAPL/apple/stock-price-history
+
+AMZN: https://www.macrotrends.net/stocks/charts/TCS/container-store/stock-price-history
+
+META: https://www.macrotrends.net/stocks/charts/META/meta-platforms/stock-price-history
+
+MSFT: https://www.macrotrends.net/stocks/charts/MSFT/microsoft/stock-price-history
+
+NFLX: https://www.macrotrends.net/stocks/charts/NFLX/netflix/stock-price-history
+
+NVDA Stock: https://www.macrotrends.net/stocks/charts/NVDA/nvidia/stock-price-history
+
+TCS: https://www.macrotrends.net/stocks/charts/TCS/container-store/stock-price-history
+
+Illustration Links:
+
+Illustration 1(Project Resources Section and GitHub Repository Illustration): https://img.freepik.com/premium-vector/flat-design-stock-market-analysis_23-2148590818.jpg
+
+Illustration 2(Streamlit app Background image): https://vectormine.b-cdn.net/wp-content/uploads/Stock_Market.jpg
