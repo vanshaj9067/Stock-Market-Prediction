@@ -1173,12 +1173,13 @@ def display_text_model_prediction():
     try:
         with open(model_path, "rb") as file:
             model = pickle.load(file)
-        # st.write("Model loaded successfully.")
+        st.write("Model loaded successfully.")
     except FileNotFoundError:
-        # st.error("Model file not found at the specified path.")
+        st.error("Model file not found at the specified path.")
         return
 
     # Step 3: Vectorize the cleaned text data using TF-IDF
+    """
     vectorizer = TfidfVectorizer(max_features=5000)
     X_transformed = vectorizer.fit_transform(data["cleaned_text"]).toarray()
 
@@ -1201,6 +1202,8 @@ def display_text_model_prediction():
             st.error(
                 "The model predicts: Down (0)"
             )  # Use st.warning() for a yellow background
+
+    """
 
 
 # Function to Display Model Performance
