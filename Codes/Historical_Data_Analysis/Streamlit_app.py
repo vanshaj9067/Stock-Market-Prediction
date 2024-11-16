@@ -1154,7 +1154,7 @@ def display_text_model_prediction():
         "Random_Forest_Best_Model.pkl",
     )
 
-    # Step 1: Load the pre-trained model
+    # Step 2: Load the pre-trained model
     try:
         with open(model_path, "rb") as file:
             model = pickle.load(file)
@@ -1163,22 +1163,22 @@ def display_text_model_prediction():
         # st.error("Model file not found at the specified path.")
         return
 
-    # Step 2: Streamlit input for user text
+    # Step 3: Vectorize the cleaned text data using TF-IDF
+    vectorizer = TfidfVectorizer(max_features=5000)
+
+    # Step 4: Streamlit input for user text
     user_input = st.text_input(
         "Enter the text to predict the stock movement (0: Down, 1: Up):"
     )
 
-    # Step 3: Vectorize the cleaned text data using TF-IDF
-    vectorizer = TfidfVectorizer(max_features=5000)
-
     if user_input:
-        # Step 4: Transform user input using the same vectorizer
+        # Step 5: Transform user input using the same vectorizer
         user_input_transformed = vectorizer.transform([user_input]).toarray()
 
-        # Step 5: Use the model to predict the user input
+        # Step 6: Use the model to predict the user input
         prediction = model.predict(user_input_transformed)
 
-        # Step 6: Display prediction
+        # Step 7: Display prediction
         if prediction[0] == 1:
             st.success("The model predicts: Up (1)")
         else:
