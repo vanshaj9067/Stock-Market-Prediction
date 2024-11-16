@@ -1180,7 +1180,7 @@ def display_text_model_prediction():
 
     # Step 3: Vectorize the cleaned text data using TF-IDF
 
-    vectorizer = TfidfVectorizer(max_features=1000)
+    vectorizer = TfidfVectorizer(max_features=5000)
     X_transformed = vectorizer.fit_transform(data["cleaned_text"]).toarray()
 
     # Step 4: Streamlit input for user text
