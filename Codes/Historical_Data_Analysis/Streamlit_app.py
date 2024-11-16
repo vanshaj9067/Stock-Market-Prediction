@@ -924,11 +924,17 @@ def display_numerical_model_visualization(ticker):
     )
 
 
+# Directory containing the preprocessed datasets
+DATASET_DIR_1 = "Codes/Historical_Data_Analysis"
+
+
 # Define the function for displaying the model prediction
 def display_numerical_model_predicted(ticker, open_price, high, low, volume):
     # Define dataset and model paths
     dataset_path = os.path.join(DATASET_DIR, f"Preprocessed_{ticker}_Dataset.csv")
-    model_path = os.path.join("Models", "pkl_models", f"{ticker}_Ensemble_Model.pkl")
+    model_path = os.path.join(
+        DATASET_DIR_1, "Models", "pkl_models", f"{ticker}_Ensemble_Model.pkl"
+    )
 
     # Check if the dataset file exists
     if not os.path.isfile(dataset_path):
