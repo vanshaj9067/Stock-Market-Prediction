@@ -1168,14 +1168,17 @@ def display_text_model_prediction():
         "Enter the text to predict the stock movement (0: Down, 1: Up):"
     )
 
+    # Step 3: Vectorize the cleaned text data using TF-IDF
+    vectorizer = TfidfVectorizer(max_features=5000)
+
     if user_input:
-        # Step 3: Transform user input using the same vectorizer
+        # Step 4: Transform user input using the same vectorizer
         user_input_transformed = vectorizer.transform([user_input]).toarray()
 
-        # Step 4: Use the model to predict the user input
+        # Step 5: Use the model to predict the user input
         prediction = model.predict(user_input_transformed)
 
-        # Step 5: Display prediction
+        # Step 6: Display prediction
         if prediction[0] == 1:
             st.success("The model predicts: Up (1)")
         else:
