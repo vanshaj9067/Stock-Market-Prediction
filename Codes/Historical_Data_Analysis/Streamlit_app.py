@@ -1108,7 +1108,7 @@ def display_text_model_visualization():
         
         <!-- Image 1 -->
         <div style="text-align:center;">
-            <img src="https://github.com/madhurimarawat/Stock-Market-Prediction/raw/main/Codes/Historical_Data_Analysis\Textual_Analysis\Plots\Most_Frequent_Words_in_News_Articles.png" width="100%" alt="Model Visualization Snapshot 1" title="Model Visualization Snapshot 1" />
+            <img src="https://github.com/madhurimarawat/Stock-Market-Prediction/raw/main/Codes/Historical_Data_Analysis\Textual_Analysis\Transparent_Plots\Most_Frequent_Words_in_News_Articles.png" width="100%" alt="Model Visualization Snapshot 1" title="Model Visualization Snapshot 1" />
             <br><br>
         </div>
 
