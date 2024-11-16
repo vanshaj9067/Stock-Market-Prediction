@@ -13,6 +13,7 @@ Libraries used:
 - Pickle: Used for loading pre-trained machine learning models.
 - Scikit-learn (implied): For model handling and text feature extraction.
 - TextBlob: For basic natural language processing tasks.
+- Joblib: Used for reading and processing machine learning models
 
 Functions are explained below:
 
@@ -66,6 +67,9 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 
 # Importing TextBlob for basic natural language processing tasks
 from textblob import TextBlob
+
+# For reading models
+import joblib
 
 
 # To show Font Awesome icons
@@ -1150,14 +1154,14 @@ def display_text_model_prediction():
         "Textual_Analysis",
         "Models",
         "Classification",
-        "pkl_models",
-        "Random_Forest_Best_Model.pkl",
+        "joblib_models",
+        "Random_Forest_Best_Model.joblib",
     )
 
     # Step 1: Load the pre-trained model
     try:
         with open(model_path, "rb") as file:
-            model = pickle.load(file)
+            model = joblib.load(file)
         # st.write("Model loaded successfully.")
     except FileNotFoundError:
         # st.error("Model file not found at the specified path.")
