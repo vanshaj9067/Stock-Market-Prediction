@@ -1143,7 +1143,14 @@ def display_text_model_visualization():
 
 # Function to predict and display the text model prediction
 def display_text_model_prediction():
-
+    # File paths for the dataset and model
+    csv_path = os.path.join(
+        "Codes",
+        "Historical_Data_Analysis",
+        "Textual_Analysis",
+        "Dataset",
+        "Preprocessed_Text_Dataset_Subset.csv",
+    )
     model_path = os.path.join(
         "Codes",
         "Historical_Data_Analysis",
@@ -1153,6 +1160,14 @@ def display_text_model_prediction():
         "pkl_models",
         "Random_Forest_Best_Model.pkl",
     )
+
+    # Step 1: Load the preprocessed dataset
+    try:
+        data = pd.read_csv(csv_path)
+        st.write("Dataset loaded successfully.")
+    except FileNotFoundError:
+        st.error("Dataset file not found at the specified path.")
+        return
 
     # Step 2: Load the pre-trained model
     try:
@@ -1165,6 +1180,7 @@ def display_text_model_prediction():
 
     # Step 3: Vectorize the cleaned text data using TF-IDF
     vectorizer = TfidfVectorizer(max_features=5000)
+    X_transformed = vectorizer.fit_transform(data["cleaned_text"]).toarray()
 
     # Step 4: Streamlit input for user text
     user_input = st.text_input(
