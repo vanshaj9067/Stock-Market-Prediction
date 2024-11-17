@@ -32,10 +32,10 @@ import warnings
 warnings.filterwarnings("ignore")
 
 # InfluxDB credentials and configuration
-org = "Chhattisgarh Swami Vivekanand Technical University"
-token = "gJyTVqkZEBCr8hcVEsp7sohGgv-wvqUSxJ9kxr3k8ZEthXGdVZ00NKirVo4fnu39ujtkSTTAIYNn6HI-Xx4NJg=="
+org = "Organization Name"
+token = "Token"
 url = "http://127.0.0.1:8086"
-bucket = "stock_price"
+bucket = "Bucket Name"
 
 # Base directory (this script and the subfolders are in the same parent directory)
 base_dir = os.path.dirname(os.path.dirname(__file__))
