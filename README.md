@@ -1,22 +1,45 @@
 # Stock-Market-Prediction
 
-This repository is for our 7th-semester minor project titled **Advanced Stock Price Forecasting Using a Hybrid Model of Numerical and Textual Analysis**
+This repository is for our 7th-semester project, **Advanced Stock Price Forecasting Using a Hybrid Model of Numerical and Textual Analysis**. It uses Python, NLP (NLTK, spaCy), machine learning models, Grafana, InfluxDB, and Streamlit for comprehensive data analysis and visualization.
 
-![Stock Market Illustration](https://github.com/user-attachments/assets/f5751f74-43c5-4045-aa9f-bb7abd19c1aa)
+![📈 Stock Market Illustration](https://github.com/user-attachments/assets/f5751f74-43c5-4045-aa9f-bb7abd19c1aa)
 
-## Current Progress
+## Project Description
 
-For the project **Advanced Stock Price Forecasting Using a Hybrid Model of Numerical and Textual Analysis**, we have made significant strides in multiple areas:
+The **Advanced Stock Price Forecasting Using a Hybrid Model of Numerical and Textual Analysis** project involves a comprehensive approach to predicting stock prices using both numerical data and textual analysis. The project components include:
 
-1. **Data Collection and Storage**: We are working with historical stock data of major companies. This data has been transferred into an InfluxDB database, allowing us to handle extensive time-series data efficiently.
+1. **Data Collection and Storage**: We gathered historical stock data of major companies and stored it in an InfluxDB database to efficiently handle large-scale time-series data.
 
-2. **Data Visualization**: We have set up a Grafana dashboard, which will enable real-time visualization of stock prices and analysis outcomes as we advance in our model development.
+2. **Data Visualization**: A Grafana dashboard has been set up for real-time visualization of stock prices and analysis results, enhancing data interpretation and decision-making processes.
 
-3. **Textual Analysis for Enhanced Forecasting**: For textual analysis, we are leveraging Natural Language Processing (NLP) libraries, including NLTK and spaCy, to extract relevant insights from financial news and reports. This component will complement the numerical analysis, improving the accuracy of our hybrid forecasting model.
+3. **Textual Analysis for Enhanced Forecasting**: We utilized Natural Language Processing (NLP) libraries, such as NLTK and spaCy, to analyze financial news and reports. This component complements numerical analysis to improve the accuracy of our hybrid forecasting model.
 
-4. **Machine Learning**: We are currently exploring advanced machine learning models like ARIMA, LSTM, and Transformer, focusing on both the numerical and textual data components to form a comprehensive prediction model.
+4. **Machine Learning Models**: The project used models including Naive Bayes, MLP (Multi-Layer Perceptron), Logistic Regression, and Random Forest to process both numerical and textual data, creating a robust and comprehensive stock prediction system.
 
-5. **Collaboration and Project Management**: The project repository on GitHub is up and running with all team members on board. We've organized tasks efficiently to promote seamless collaboration and effective version control.
+5. **Collaboration and Project Management**: The repository includes contributions from all team members with well-organized tasks, ensuring seamless collaboration and effective version control.
+
+## Directory Structure
+
+```plaintext
+📁 Stock-Market-Prediction/
+├── 📁 Codes/
+│   ├── 📁 Historical_Data_Analysis/
+│   ├── 📁 Partial_Data_Analysis/
+│   ├── 📁 Ticker_Symbols_Stocks/
+│   ├── 📁 Flask_App/
+│   └── 📄 README.md
+│
+├── 📁 Conferences/
+│
+├── 📁 Documents/
+│
+├── 📁 Reference_Documents/
+│
+├── 📁 Resources/
+│
+├── 📄 LICENSE
+└── 📄 README.md
+```
 
 ---
 
@@ -33,10 +56,140 @@ For the project **Advanced Stock Price Forecasting Using a Hybrid Model of Numer
 | <img src="https://cdn4.iconfinder.com/data/icons/logos-and-brands/512/235_Nvidia_logo-512.png" height="40"> <br> Nvidia Corp. [NVDA] | Specializes in graphics processing units and AI technology. | 1999-01-22 : 2024-10-17 | (6477, 5) | 1999-01-22          | 2024-10-17         | $0.0377              | $136.93              |
 | <img src="https://companieslogo.com/img/orig/TCS.NS-7401f1bd.png?t=1631949260" height="40"> <br> Tata Consultancy Services [TCS] | Leading global IT services, consulting, and business solutions provider. | 2013-11-01 : 2024-10-17 | (2758, 5) | 2013-11-01          | 2024-10-17         | $543.0               | $11.8                |
 
+---
+
+## Tools and Technologies
+
+1. **Python**: Core programming language used for data analysis, model building, and backend development.
+2. **GitHub**: Platform for version control and collaborative development.
+3. **InfluxDB**: Database for efficient time-series data storage and retrieval.
+4. **Grafana**: Tool for real-time data visualization and dashboard creation.
+5. **Streamlit**: Framework for creating interactive web applications.
+6. **Flask**: Lightweight framework for developing the project’s backend.
+7. **Pandas**: Library for data manipulation and analysis.
+8. **Matplotlib & Plotly**: Libraries for data visualization and graphical representation.
+9. **NLP Libraries (NLTK, spaCy)**: Tools for processing and analyzing text data.
+10. **Machine Learning Libraries**: Used for implementing models like Naive Bayes, MLP, Logistic Regression, and Random Forest.
+
+---
+
+## Project Database & Dashboard
+
+For easy visualization and data management, we are using the following tools:
+
+### InfluxDB Database 
+
+### 1. Numerical Analysis
+![Numerical Analysis Snapshot](https://github.com/madhurimarawat/Stock-Market-Prediction/raw/main/Codes/Historical_Data_Analysis/Database_Dashboard_Snapshots/InfluxDB_Database/Numerical_Analysis_1.png)
+
+### 2. Model Prediction
+![Model Prediction Snapshot](https://github.com/madhurimarawat/Stock-Market-Prediction/raw/main/Codes/Historical_Data_Analysis/Database_Dashboard_Snapshots/InfluxDB_Database/Model_Prediction_1.png)
+
+### 3. Textual Analysis
+![Textual Analysis Snapshot](https://github.com/madhurimarawat/Stock-Market-Prediction/raw/main/Codes/Historical_Data_Analysis/Database_Dashboard_Snapshots/InfluxDB_Database/Textual_Analysis_1.png)
+
+### 4. Hybrid Model
+![Hybrid Model Snapshot](https://github.com/madhurimarawat/Stock-Market-Prediction/raw/main/Codes/Historical_Data_Analysis/Database_Dashboard_Snapshots/InfluxDB_Database/Hybrid_Model_1.png)
+`
+
+### Grafana Dashboard
+
+### 1. Stock Market and Project Dashboard Overview
+This section provides an overview of the stock market, project details, and descriptions of the companies used in the project, 
+including MAANG, Nvidia, Microsoft, and TCS.
+
+![Stock Market Overview Snapshot 1](https://github.com/madhurimarawat/Stock-Market-Prediction/raw/main/Codes/Historical_Data_Analysis/Database_Dashboard_Snapshots/Grafana_Dashboard/Stock_Market_and_Project_Dashboard_Overview/Dashboard_1.png)
+![Stock Market Overview Snapshot 2](https://github.com/madhurimarawat/Stock-Market-Prediction/raw/main/Codes/Historical_Data_Analysis/Database_Dashboard_Snapshots/Grafana_Dashboard/Stock_Market_and_Project_Dashboard_Overview/Dashboard_Panel_Dashboard_Description_and_Datasets_Information_View_1.png)
+![Stock Market Overview Snapshot 3](https://github.com/madhurimarawat/Stock-Market-Prediction/raw/main/Codes/Historical_Data_Analysis/Database_Dashboard_Snapshots/Grafana_Dashboard/Stock_Market_and_Project_Dashboard_Overview/Dashboard_Panel_Dashboard_Description_and_Datasets_Information_View_2.png)
+![Stock Market Overview Snapshot 4](https://github.com/madhurimarawat/Stock-Market-Prediction/raw/main/Codes/Historical_Data_Analysis/Database_Dashboard_Snapshots/Grafana_Dashboard/Stock_Market_and_Project_Dashboard_Overview/Dashboard_Panel_Stock_Market_View_1.png)
+
+### 2. Numerical Analysis
+This section displays numerical data of the stock market, featuring graphs of open, high, low, and close prices 
+along with volume bar plots, RSI, and moving averages.
+
+![Numerical Analysis Snapshot 1](https://github.com/madhurimarawat/Stock-Market-Prediction/raw/main/Codes/Historical_Data_Analysis/Database_Dashboard_Snapshots/Grafana_Dashboard/Numerical_Analysis/Dashboard_1.png)
+![Numerical Analysis Snapshot 2](https://github.com/madhurimarawat/Stock-Market-Prediction/raw/main/Codes/Historical_Data_Analysis/Database_Dashboard_Snapshots/Grafana_Dashboard/Numerical_Analysis/Dashboard_2.png)
+![Numerical Analysis Snapshot 3](https://github.com/madhurimarawat/Stock-Market-Prediction/raw/main/Codes/Historical_Data_Analysis/Database_Dashboard_Snapshots/Grafana_Dashboard/Numerical_Analysis/Dashboard_3.png)
+
+### 3. Model Prediction
+This section highlights model predictions, including individual and comparative graphs of predicted and actual values 
+for stock prices, as well as predicted RSI and moving averages.
+
+![Model Prediction Snapshot 1](https://github.com/madhurimarawat/Stock-Market-Prediction/raw/main/Codes/Historical_Data_Analysis/Database_Dashboard_Snapshots/Grafana_Dashboard/Model_Prediction/Dashboard_1.png)
+![Model Prediction Snapshot 2](https://github.com/madhurimarawat/Stock-Market-Prediction/raw/main/Codes/Historical_Data_Analysis/Database_Dashboard_Snapshots/Grafana_Dashboard/Model_Prediction/Dashboard_2.png)
+![Model Prediction Snapshot 3](https://github.com/madhurimarawat/Stock-Market-Prediction/raw/main/Codes/Historical_Data_Analysis/Database_Dashboard_Snapshots/Grafana_Dashboard/Model_Prediction/Dashboard_Panel_Model_Evaluation_View.png)
+
+### 4. Textual Analysis
+This section visualizes sentiment analysis from news headlines, showcasing positive, negative, and neutral sentiment scores.
+
+![Textual Analysis Snapshot 1](https://github.com/madhurimarawat/Stock-Market-Prediction/raw/main/Codes/Historical_Data_Analysis/Database_Dashboard_Snapshots/Grafana_Dashboard/Textual_Analysis/Dashboard_1.png)
+![Textual Analysis Snapshot 2](https://github.com/madhurimarawat/Stock-Market-Prediction/raw/main/Codes/Historical_Data_Analysis/Database_Dashboard_Snapshots/Grafana_Dashboard/Textual_Analysis/Dashboard_2.png)
+
+### 5. Hybrid Model
+The hybrid model combines numerical and textual data for a comprehensive analysis.
+
+![Hybrid Model Snapshot 1](https://github.com/madhurimarawat/Stock-Market-Prediction/raw/main/Codes/Historical_Data_Analysis/Database_Dashboard_Snapshots/Grafana_Dashboard/Hybrid_Model/Dashboard_1.png)
+![Hybrid Model Snapshot 2](https://github.com/madhurimarawat/Stock-Market-Prediction/raw/main/Codes/Historical_Data_Analysis/Database_Dashboard_Snapshots/Grafana_Dashboard/Hybrid_Model/Dashboard_2.png)
+![Hybrid Model Snapshot 3](https://github.com/madhurimarawat/Stock-Market-Prediction/raw/main/Codes/Historical_Data_Analysis/Database_Dashboard_Snapshots/Grafana_Dashboard/Hybrid_Model/Dashboard_3.png)
+![Hybrid Model Snapshot 4](https://github.com/madhurimarawat/Stock-Market-Prediction/raw/main/Codes/Historical_Data_Analysis/Database_Dashboard_Snapshots/Grafana_Dashboard/Hybrid_Model/Dashboard_4.png)
+        
+---
+
+### Project Deployment
+
+1. **Streamlit:**
+The app is deployed at: &nbsp; [Stock Market Numerical and Text Hybrid Prediction](https://stock-market-numerical-text-hybrid-prediction.streamlit.app/)
+
+Here's an overview of the Streamlit App:
+
+<a href="https://stock-market-numerical-text-hybrid-prediction.streamlit.app/" target="_blank">
+  <img src="https://github.com/madhurimarawat/Stock-Market-Prediction/blob/main/Codes/Historical_Data_Analysis/App_Snapshots/Streamlit_App/App_View_1.png" 
+       alt="Streamlit App View 1" 
+       title="Streamlit App View 1">
+</a>
+
+<a href="https://stock-market-numerical-text-hybrid-prediction.streamlit.app/" target="_blank">
+  <img src="https://github.com/madhurimarawat/Stock-Market-Prediction/blob/main/Codes/Historical_Data_Analysis/App_Snapshots/Streamlit_App/App_View_2.png" 
+       alt="Streamlit App View 2" 
+       title="Streamlit App View 2">
+</a>
+
+<a href="https://stock-market-numerical-text-hybrid-prediction.streamlit.app/" target="_blank">
+  <img src="https://github.com/madhurimarawat/Stock-Market-Prediction/blob/main/Codes/Historical_Data_Analysis/App_Snapshots/Streamlit_App/App_View_3.png" 
+       alt="Streamlit App View 3" 
+       title="Streamlit App View 3">
+</a>
+
+
+3. **Flask:**
+The app codes can be seen here: [Flask App Codes](https://github.com/madhurimarawat/Stock-Market-Prediction/tree/main/Codes/Flask_App).
+
+Here's an overview of the Flask App:
+
+![Flask App GIF](https://github.com/user-attachments/assets/86f149d3-d746-4008-8a0c-6dfd6f539f54)
+
+
+---
+
+## Meet the Team
+
+| **Name** | **Madhurima Rawat** | **Geetanshu Dev Meshram** | **Sneha Jha** |
+|-------------------------------------|----------------------------------|------------------------------------|-----------------------------|
+| ![Role](https://img.icons8.com/ios-glyphs/30/000000/briefcase.png) **Role** | Project Planner & Developer | Data Analyst & Backend Developer | Data Analyst |
+| ![Tasks](https://img.icons8.com/ios-glyphs/30/000000/task.png) **Responsibilities** | Project planning, managing GitHub repository, code documentation, InfluxDB database setup, Grafana dashboard, Streamlit deployment, Flask backend, data visualization & preprocessing | Model building for numerical data, Flask app design | Text data processing, model building, hybrid model creation |
+| ![Tools](https://img.icons8.com/ios-glyphs/30/000000/settings.png) **Tools** | GitHub, InfluxDB, Grafana, Streamlit, Python, Flask, Pandas, Matplotlib, Plotly | Python, Flask, ML libraries | NLP libraries, ML libraries, hybrid modeling tools |
+| ![GitHub](https://img.icons8.com/ios-glyphs/30/000000/github.png) **GitHub** | [GitHub](https://github.com/madhurimarawat) | [GitHub](https://github.com/geetanshudev) | [GitHub](https://github.com/Sneha100802) |
+| ![LinkedIn](https://img.icons8.com/ios-glyphs/30/000000/linkedin.png) **LinkedIn** | [LinkedIn](https://www.linkedin.com/in/madhurima-rawat/) | [LinkedIn](https://www.linkedin.com/in/geetanshu-dev-meshram-2b3b61240/) | [LinkedIn](https://www.linkedin.com/in/sneha-jha-808796261/) |
+| ![Email](https://img.icons8.com/ios-glyphs/30/000000/email.png) **Email** | [Email](mailto:rawtamadhurima@gmail.com) | [Email](mailto:meshramgeetanshudev@gmail.com) | [Email](mailto:jhasneha344@gmail.com) |
+
+---
+
 ## Resources
+
 1. **Partial Data Analysis**:
    - Historical Stock Prices: [Yahoo Finance](https://finance.yahoo.com/)
-   - Textual Data: [Textual Dataset](https://bit.ly/36fFPI6)
+   - **Textual and Hybrid Data:**
+        - [Kaggle Dataset - News & Stock Prices](https://www.kaggle.com/datasets/kianso/news-stock-price)
 
 2. **Complete Historical Data**:
   - **Alphabet (Google) (GOOG)**: [Google Stock Price](https://www.macrotrends.net/stocks/charts/GOOG/google/stock-price-history)
@@ -48,24 +201,6 @@ For the project **Advanced Stock Price Forecasting Using a Hybrid Model of Numer
    - **Microsoft (MSFT)**: [Microsoft Stock Price](https://www.macrotrends.net/stocks/charts/MSFT/microsoft/stock-price-history)
    - **TCS**: [TCS Stock Price](https://www.macrotrends.net/stocks/charts/TCS/container-store/stock-price-history)
 
----
-
-## Project Database & Dashboard
-
-For easy visualization and data management, we are using the following tools:
-
-1. **InfluxDB Database**: Efficient time-series storage for handling historical and live data of large-volume stocks.
-
-*Images of the InfluxDB Database will be added below:*
-
- ![InfluxDB Database Overview](https://github.com/user-attachments/assets/48cf5842-3637-4842-9081-95491ad8770f)
-   
-3. **Grafana Dashboard**: Providing a dynamic interface to view and interact with real-time forecasting results.
-
-*Images of the Grafana Dashboard will be added below:*
-
-![Grafana Dashboard - Detailed Analysis](https://github.com/user-attachments/assets/6de571a7-d831-439d-aac3-5bbc3751b960)
-   <br>
-   ![Grafana Dashboard - Overview 1](https://github.com/user-attachments/assets/c1b8d258-cb11-40de-8fce-aa9ca09bb133)
-   <br>
-![Grafana Dashboard - Overview 2](https://github.com/user-attachments/assets/46502871-1e0d-4314-908e-d123d1e3db8d)
+3. **Illustration Links:**
+   - [Project Resources (Illustration 1)](https://img.freepik.com/premium-vector/flat-design-stock-market-analysis_23-2148590818.jpg)
+   - [Streamlit App Background Image (Illustration 2)](https://vectormine.b-cdn.net/wp-content/uploads/Stock_Market.jpg)
