@@ -30,10 +30,10 @@ from influxdb_client.client.write_api import SYNCHRONOUS
 import pickle
 
 # InfluxDB credentials and configuration
-org = "Chhattisgarh Swami Vivekanand Technical University"
-token = "gJyTVqkZEBCr8hcVEsp7sohGgv-wvqUSxJ9kxr3k8ZEthXGdVZ00NKirVo4fnu39ujtkSTTAIYNn6HI-Xx4NJg=="
+org = "Organization Name"
+token = "Token"
 url = "http://127.0.0.1:8086"
-bucket = "stock_price"
+bucket = "Bucket Name"
 
 # Initialize the InfluxDB client and write API
 client = InfluxDBClient(url=url, token=token, org=org)
