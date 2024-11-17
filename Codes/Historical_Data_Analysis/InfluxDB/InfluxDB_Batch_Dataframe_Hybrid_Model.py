@@ -1,3 +1,38 @@
+"""
+This script performs data preprocessing, prediction, and data storage for stock and sentiment analysis.
+It reads a preprocessed CSV dataset, loads a pre-trained machine learning model, makes predictions,
+calculates technical indicators such as RSI and moving averages, and sends the processed data to InfluxDB.
+
+Modules Used:
+- os: To handle file paths.
+- pandas (pd): For data manipulation and analysis.
+- influxdb_client: For connecting and writing data to an InfluxDB database.
+- pickle: To load a pre-trained machine learning model.
+- sklearn.preprocessing: For scaling the data.
+- random: To add random time offsets to dates.
+- datetime.timedelta: For adding time differences.
+- ta (Technical Analysis library): To calculate RSI and moving averages.
+- warnings: To suppress warnings during script execution.
+
+Steps:
+1. Read the CSV file from a specified path.
+2. Fill missing 'sentiment' data with zero and forward-fill/bfill stock price columns.
+3. Convert the 'date' column to datetime format and add random time offsets for unique timestamps.
+4. Load a pre-trained model using `pickle`.
+5. Normalize feature columns using `MinMaxScaler` from scikit-learn.
+6. Predict stock closing prices and add to the DataFrame.
+7. Calculate technical indicators (RSI, moving averages) for actual and predicted stock prices.
+8. Normalize predicted closing prices to ensure reasonable differences from actual values.
+9. Prepare data for writing to InfluxDB and write data.
+10. Print data for verification before and after normalization, and confirm data transmission.
+
+InfluxDB Connection Details:
+- Requires `org`, `token`, `url`, and `bucket` to connect and write data.
+
+Note: Ensure InfluxDB and all required libraries are installed and configured before running this script.
+"""
+
+
 import os
 import pandas as pd
 from influxdb_client import InfluxDBClient
@@ -12,10 +47,10 @@ import warnings
 warnings.filterwarnings("ignore")
 
 # InfluxDB credentials and configuration
-org = "Chhattisgarh Swami Vivekanand Technical University"
-token = "gJyTVqkZEBCr8hcVEsp7sohGgv-wvqUSxJ9kxr3k8ZEthXGdVZ00NKirVo4fnu39ujtkSTTAIYNn6HI-Xx4NJg=="
+org = "Organization Name"
+token = "Token"
 url = "http://127.0.0.1:8086"
-bucket = "stock_price"
+bucket = "Bucket Name"
 
 # Base directory setup - points to the parent of 'Historical_Data_Analysis' and 'InfluxDB'
 base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
