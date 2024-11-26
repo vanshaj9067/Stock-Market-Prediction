@@ -67,6 +67,8 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 # Importing TextBlob for basic natural language processing tasks
 from textblob import TextBlob
 
+# Setting Page title
+st.set_page_config(page_title="Stock Prediction")
 
 # To show Font Awesome icons
 css_example = """
@@ -1514,9 +1516,9 @@ def display_project_dashboard():
         </p>
         <img src="https://github.com/madhurimarawat/Stock-Market-Prediction/raw/main/Codes/Historical_Data_Analysis/Database_Dashboard_Snapshots/Grafana_Dashboard/Stock_Market_and_Project_Dashboard_Overview/Dashboard_1.png" width="100%" alt="Stock Market Overview Snapshot 1" title="Stock Market Overview Snapshot 1" />
         <br><br>
-        <img src="https://github.com/madhurimarawat/Stock-Market-Prediction/raw/main/Codes/Historical_Data_Analysis/Database_Dashboard_Snapshots/Grafana_Dashboard/Stock_Market_and_Project_Dashboard_Overview/Dashboard_Panel_Dashboard_Description_and Datasets_Information_View_1.png" width="100%" alt="Stock Market Overview Snapshot 2" title="Stock Market Overview Snapshot 2" />
+        <img src="https://github.com/madhurimarawat/Stock-Market-Prediction/raw/main/Codes/Historical_Data_Analysis/Database_Dashboard_Snapshots/Grafana_Dashboard/Stock_Market_and_Project_Dashboard_Overview/Dashboard_Panel_Dashboard_Description_and_Datasets_Information_View_1.png" width="100%" alt="Stock Market Overview Snapshot 2" title="Stock Market Overview Snapshot 2" />
         <br><br>
-        <img src="https://github.com/madhurimarawat/Stock-Market-Prediction/raw/main/Codes/Historical_Data_Analysis/Database_Dashboard_Snapshots/Grafana_Dashboard/Stock_Market_and_Project_Dashboard_Overview/Dashboard_Panel_Dashboard_Description_and Datasets_Information_View_2.png" width="100%" alt="Stock Market Overview Snapshot 3" title="Stock Market Overview Snapshot 3" />
+        <img src="https://github.com/madhurimarawat/Stock-Market-Prediction/raw/main/Codes/Historical_Data_Analysis/Database_Dashboard_Snapshots/Grafana_Dashboard/Stock_Market_and_Project_Dashboard_Overview/Dashboard_Panel_Dashboard_Description_and_Datasets_Information_View_2.png" width="100%" alt="Stock Market Overview Snapshot 3" title="Stock Market Overview Snapshot 3" />
         <br><br>
         <img src="https://github.com/madhurimarawat/Stock-Market-Prediction/raw/main/Codes/Historical_Data_Analysis/Database_Dashboard_Snapshots/Grafana_Dashboard/Stock_Market_and_Project_Dashboard_Overview/Dashboard_Panel_Stock_Market_View_1.png" width="100%" alt="Stock Market Overview Snapshot 4" title="Stock Market Overview Snapshot 4" />
         <br><br>
@@ -1584,13 +1586,13 @@ def display_project_dashboard():
         <p>
         The hybrid model combines numerical and textual data for a comprehensive analysis.
         </p>
-        <img src="https://github.com/madhurimarawat/Stock-Market-Prediction/raw/main/Codes/Historical_Data_Analysis/Database_Dashboard_Snapshots/Grafana_Dashboard/Hybrid_Model_1.png" width="100%" alt="Hybrid Model Snapshot 1" title="Hybrid Model Snapshot 1" />
+        <img src="https://github.com/madhurimarawat/Stock-Market-Prediction/raw/main/Codes/Historical_Data_Analysis/Database_Dashboard_Snapshots/Grafana_Dashboard/Hybrid_Model/Dashboard_1.png" width="100%" alt="Hybrid Model Snapshot 1" title="Hybrid Model Snapshot 1" />
         <br><br>
-        <img src="https://github.com/madhurimarawat/Stock-Market-Prediction/raw/main/Codes/Historical_Data_Analysis/Database_Dashboard_Snapshots/Grafana_Dashboard/Hybrid_Model_2.png" width="100%" alt="Hybrid Model Snapshot 2" title="Hybrid Model Snapshot 2" />
+        <img src="https://github.com/madhurimarawat/Stock-Market-Prediction/raw/main/Codes/Historical_Data_Analysis/Database_Dashboard_Snapshots/Grafana_Dashboard/Hybrid_Model/Dashboard_2.png" width="100%" alt="Hybrid Model Snapshot 2" title="Hybrid Model Snapshot 2" />
         <br><br>
-        <img src="https://github.com/madhurimarawat/Stock-Market-Prediction/raw/main/Codes/Historical_Data_Analysis/Database_Dashboard_Snapshots/Grafana_Dashboard/Hybrid_Model_3.png" width="100%" alt="Hybrid Model Snapshot 3" title="Hybrid Model Snapshot 3" />
+        <img src="https://github.com/madhurimarawat/Stock-Market-Prediction/raw/main/Codes/Historical_Data_Analysis/Database_Dashboard_Snapshots/Grafana_Dashboard/Hybrid_Model/Dashboard_3.png" width="100%" alt="Hybrid Model Snapshot 3" title="Hybrid Model Snapshot 3" />
         <br><br>
-        <img src="https://github.com/madhurimarawat/Stock-Market-Prediction/raw/main/Codes/Historical_Data_Analysis/Database_Dashboard_Snapshots/Grafana_Dashboard/Hybrid_Model_4.png" width="100%" alt="Hybrid Model Snapshot 4" title="Hybrid Model Snapshot 4" />
+        <img src="https://github.com/madhurimarawat/Stock-Market-Prediction/raw/main/Codes/Historical_Data_Analysis/Database_Dashboard_Snapshots/Grafana_Dashboard/Hybrid_Model/Dashboard_4.png" width="100%" alt="Hybrid Model Snapshot 4" title="Hybrid Model Snapshot 4" />
         <br><br>
         """,
         unsafe_allow_html=True,
