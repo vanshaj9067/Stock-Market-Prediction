@@ -31,10 +31,10 @@ import shutil
 
 # Define input and output directories
 input_dir = os.path.abspath(
-    "New_code_&_Model\Models"
+    "Source_directory"
 )  # Directory containing the model files
 output_dir = os.path.abspath(
-    "ML_Model_Codes"
+    "Output_directory"
 )  # Destination directory for renamed files
 
 # Define separate folders for .pkl and .joblib files within the output directory
