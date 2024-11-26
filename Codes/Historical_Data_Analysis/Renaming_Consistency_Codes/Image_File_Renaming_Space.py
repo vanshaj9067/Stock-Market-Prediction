@@ -34,7 +34,7 @@ Usage:
 import os
 
 # Directory to traverse
-directory = r"C:\Users\rawat\Documents\7 SEMESTER\Minor Project\Codes\Historical_Data_Analysis\Database_Dashboard_Snapshots\Grafana_Dashboard\Stock_Market_and_Project_Dashboard_Overview"
+directory = "source_directory"
 
 # Traverse through all files and subdirectories
 for root, _, files in os.walk(directory):
