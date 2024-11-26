@@ -45,10 +45,10 @@ import os
 import shutil
 
 # Define source and destination directories
-source_dir = os.path.abspath("New_code_&_Model")  # Actual source directory
-renamed_models_dir = os.path.abspath("ML_Model_Codes")
-model_codes_dir = os.path.abspath("ML_Model_Codes")
-logos_dir = os.path.join(renamed_models_dir, "Logos")
+source_dir = os.path.abspath("source_directory")  # Actual source directory
+renamed_models_dir = os.path.abspath("Output_directory")
+model_codes_dir = os.path.abspath("Output_directory")
+logos_dir = os.path.join(renamed_models_dir, "Output_directory_Logos")
 
 # Create destination directories if they don't exist
 os.makedirs(model_codes_dir, exist_ok=True)
