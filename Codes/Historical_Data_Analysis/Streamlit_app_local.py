@@ -68,6 +68,8 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from textblob import TextBlob
 
 # Setting Page title
+# This will only show in localhost not in the deployed app
+# In the deployed app, title will be displayed as Streamlit only
 st.set_page_config(page_title="Stock Prediction")
 
 # To show Font Awesome icons
