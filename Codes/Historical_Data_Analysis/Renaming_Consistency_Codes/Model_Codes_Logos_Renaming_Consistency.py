@@ -1,6 +1,3 @@
-import os
-import shutil
-
 """
 
 Libraries Used:
@@ -43,6 +40,9 @@ Usage:
 - This script will rename and move files automatically based on the mappings and logic defined.
 """
 
+# Importing Required Libraries
+import os
+import shutil
 
 # Define source and destination directories
 source_dir = os.path.abspath("New_code_&_Model")  # Actual source directory

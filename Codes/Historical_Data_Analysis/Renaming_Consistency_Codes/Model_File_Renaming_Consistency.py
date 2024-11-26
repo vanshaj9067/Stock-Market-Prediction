@@ -25,6 +25,7 @@ Libraries Used:
      - `shutil.move()`: To move and rename files. In this script, it moves files from the source folder to the destination folder with new names based on the ticker symbol.
 """
 
+# Importing Required Libraries
 import os
 import shutil
 
