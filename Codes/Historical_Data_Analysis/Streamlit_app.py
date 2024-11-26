@@ -67,6 +67,8 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 # Importing TextBlob for basic natural language processing tasks
 from textblob import TextBlob
 
+# Setting Page title
+st.set_page_config(page_title="Stock Prediction")
 
 # To show Font Awesome icons
 css_example = """
@@ -1587,7 +1589,7 @@ def display_project_dashboard():
         <img src="https://github.com/madhurimarawat/Stock-Market-Prediction/raw/main/Codes/Historical_Data_Analysis/Database_Dashboard_Snapshots/Grafana_Dashboard/Textual_Analysis/Dashboard_1.png" width="100%" alt="Textual Analysis Snapshot 1" title="Textual Analysis Snapshot 1" />
         <br><br>
         <img src="https://github.com/madhurimarawat/Stock-Market-Prediction/raw/main/Codes/Historical_Data_Analysis/Database_Dashboard_Snapshots/Grafana_Dashboard/Textual_Analysis/Dashboard_2.png" width="100%" alt="Textual Analysis Snapshot 2" title="Textual Analysis Snapshot 2" />
-        <br><br
+        <br><br>
         """,
         unsafe_allow_html=True,
     )
