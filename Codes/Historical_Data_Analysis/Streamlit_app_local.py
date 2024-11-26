@@ -3,6 +3,8 @@ Author: Madhurima Rawat
 
 This Streamlit application is designed for a comprehensive stock market prediction project. It includes functionality for navigating different project sections, visualizing data, evaluating models, and predicting stock prices using preprocessed datasets. The app incorporates background customization, dropdown and radio button inputs, and interactive visualizations.
 
+This script is used to launch the app on Streamlit locally (for local testing).
+
 Libraries used:
 - Streamlit: For building the web-based interactive application framework.
 - Pandas: Used for data manipulation and analysis, especially with data frames.
@@ -67,9 +69,10 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 # Importing TextBlob for basic natural language processing tasks
 from textblob import TextBlob
 
-# Setting Page title
-# This will only show this title in the local and deployed app
-# If we will not set this, title will be displayed as Streamlit only
+# Setting the page title
+# This title will only be visible when running the app locally.
+# In the deployed app, the title will be displayed as "Title - Streamlit," where "Title" is the one we provide.
+# If we don't set the title, it will default to "Streamlit."
 st.set_page_config(page_title="Stock Prediction")
 
 # To show Font Awesome icons
