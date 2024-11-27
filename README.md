@@ -27,7 +27,6 @@ The **Advanced Stock Price Forecasting Using a Hybrid Model of Numerical and Tex
 │   ├── 📁 Partial_Data_Analysis/
 │   ├── 📁 Ticker_Symbols_Stocks/
 │   ├── 📁 Flask_App/
-│   └── 📄 README.md
 │
 ├── 📁 Conferences/
 │
