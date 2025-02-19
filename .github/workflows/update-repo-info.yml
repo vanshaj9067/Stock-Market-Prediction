@@ -12,8 +12,10 @@
 #  1️⃣ Fetches the repository creation date.
 #  2️⃣ Calculates the repository age (Years, Months, Days).
 #  3️⃣ Tracks and updates the total commit count.
-#  4️⃣ Updates the badges in the README.md dynamically.
-#  5️⃣ Commits and pushes the updated README.md file back to the repository.
+#  4️⃣ Uses `.commit_counter` to persist workflow runs.
+#  5️⃣ Fixes off-by-one issue by adding `+1` to workflow runs.
+#  6️⃣ Updates the badges in the README.md dynamically.
+#  7️⃣ Commits and pushes the updated README.md file back to the repository.
 #  
 #  🚀 No personal access token (PAT) required! Uses `GITHUB_TOKEN`.
 # ================================================================
@@ -69,7 +71,7 @@ jobs:
           fi
 
           # ✅ Increment workflow run count
-          WORKFLOW_RUNS=$((WORKFLOW_RUNS + 1))
+          WORKFLOW_RUNS=$((WORKFLOW_RUNS + 1 + 1))
 
           # ✅ Update total commits count
           TOTAL_COMMITS=$((HISTORICAL_COMMITS + WORKFLOW_RUNS))
