@@ -71,7 +71,7 @@ jobs:
           fi
 
           # ✅ Increment workflow run count
-          WORKFLOW_RUNS=$((WORKFLOW_RUNS + 1 + 1))
+          WORKFLOW_RUNS=$((WORKFLOW_RUNS + 2))
 
           # ✅ Update total commits count
           TOTAL_COMMITS=$((HISTORICAL_COMMITS + WORKFLOW_RUNS))
