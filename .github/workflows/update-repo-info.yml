@@ -1,3 +1,23 @@
+# ================================================================
+#  GitHub Actions Workflow: Update Repo Info Badges
+# ================================================================
+#  🔹 This workflow automatically updates the repository age and 
+#     total commit count in the README.md file.
+#  
+#  ✅ Runs daily at midnight (00:00 UTC) to update repo age.
+#  ✅ Runs on every push to update the total commits count.
+#  ✅ Can be manually triggered from the GitHub Actions UI.
+#  
+#  📌 Steps:
+#  1️⃣ Fetches the repository creation date.
+#  2️⃣ Calculates the repository age (Years, Months, Days).
+#  3️⃣ Retrieves the total number of commits (including historical ones).
+#  4️⃣ Updates the badges in the README.md dynamically.
+#  5️⃣ Commits and pushes the updated README.md file back to the repository.
+#  
+#  🚀 No personal access token (PAT) required! Uses `GITHUB_TOKEN`.
+# ================================================================
+
 name: Update Repo Info
 
 on:
@@ -38,7 +58,7 @@ jobs:
       - name: Get Total Commits
         id: get_commits
         run: |
-          TOTAL_COMMITS=$(curl -s "https://api.github.com/repos/madhurimarawat/Stock-Market-Prediction" | jq -r '.network_count')
+          TOTAL_COMMITS=$(curl -s "https://api.github.com/repos/madhurimarawat/Stock-Market-Prediction/commits?per_page=1" | jq -r '.[0].sha' | xargs -I {} curl -s "https://api.github.com/repos/madhurimarawat/Stock-Market-Prediction/commits/{}" | jq -r '.stats.total')
           echo "TOTAL_COMMITS=$TOTAL_COMMITS" >> $GITHUB_ENV
 
       - name: Update README.md with New Badges
