@@ -62,7 +62,7 @@ This repository began as a **7th-semester minor project** and evolved into our *
 
 <!-- Repository Age -->
 <a href="https://github.com/madhurimarawat/Stock-Market-Prediction">
-  <img src="https://img.shields.io/badge/Repo%20Age-PLACEHOLDER-%23FFA07A?style=for-the-badge&logo=github" alt="Repository Age">
+  <img src="https://img.shields.io/badge/Repo%20Age-0Y 6M 15D-%23FFA07A?style=for-the-badgehttps://img.shields.io/badge/Repo%20Age-PLACEHOLDER-%23FFA07Alogo=github?style=for-the-badge&logo=github" alt="Repository Age">
 </a>
 
 <!-- Workflow Status -->
