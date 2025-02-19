@@ -12,9 +12,11 @@
 #  1️⃣ Fetches the repository creation date.
 #  2️⃣ Calculates the repository age (Years, Months, Days).
 #  3️⃣ Tracks and updates the total commit count.
-#  4️⃣ **Resets commit tracking & starts fresh from 160 commits.**
-#  5️⃣ Updates the badges in the README.md dynamically.
-#  6️⃣ Commits and pushes the updated README.md file back to the repository.
+#  4️⃣ Uses `.commit_counter` to persist workflow runs.
+#  5️⃣ Introduces `WORKFLOW_EXECUTIONS` to track workflow runs separately.
+#  6️⃣ Adds `manual_increment` for manual commit additions if GitHub Actions fail.
+#  7️⃣ Updates the badges in the README.md dynamically.
+#  8️⃣ Commits and pushes the updated README.md file back to the repository.
 #  
 #  🚀 No personal access token (PAT) required! Uses `GITHUB_TOKEN`.
 # ================================================================
@@ -56,25 +58,50 @@ jobs:
           REPO_AGE="${AGE_YEARS}Y ${AGE_MONTHS}M ${AGE_REMAINING_DAYS}D"
           echo "REPO_AGE=$REPO_AGE" >> $GITHUB_ENV
 
-      - name: **Reset & Restart Commit Tracking**
-        id: reset_tracking
+      - name: **Track Workflow Runs & Commits**
+        id: track_commits
         run: |
           # ✅ Set the starting commit count
-          HISTORICAL_COMMITS=160  
+          HISTORICAL_COMMITS=161  
 
-          # ✅ Reset `.commit_counter` if necessary
-          echo "0" > .commit_counter
+          # ✅ Check if `.commit_counter` exists, otherwise initialize it
+          if [ ! -f .commit_counter ]; then
+            echo "0" > .commit_counter
+          fi
 
-          # ✅ Reset `.workflow_counter` if necessary
-          echo "0" > .workflow_counter
+          # ✅ Read previous commit count
+          WORKFLOW_RUNS=$(cat .commit_counter)
+
+          # ✅ Check if `.workflow_counter` exists, otherwise initialize it
+          if [ ! -f .workflow_counter ]; then
+            echo "0" > .workflow_counter
+          fi
+
+          # ✅ Read previous workflow execution count
+          WORKFLOW_EXECUTIONS=$(cat .workflow_counter)
+
+          # ✅ Set manual increment in case workflow fails
+          MANUAL_INCREMENT=0
+
+          # ✅ Increment both counters
+          WORKFLOW_RUNS=$((WORKFLOW_RUNS + 1))
+          WORKFLOW_EXECUTIONS=$((WORKFLOW_EXECUTIONS + 1))
+
+          # ✅ Update total commits count
+          TOTAL_COMMITS=$((HISTORICAL_COMMITS + WORKFLOW_RUNS + WORKFLOW_EXECUTIONS + MANUAL_INCREMENT))
+
+          # ✅ Save new counts to files
+          echo "$WORKFLOW_RUNS" > .commit_counter
+          echo "$WORKFLOW_EXECUTIONS" > .workflow_counter
 
           echo "Historical Commits: $HISTORICAL_COMMITS"
-          echo "Workflow Runs Reset to: 0"
-          echo "Workflow Executions Reset to: 0"
-          echo "Total Commits Start From: $HISTORICAL_COMMITS"
+          echo "Workflow Runs: $WORKFLOW_RUNS"
+          echo "Workflow Executions: $WORKFLOW_EXECUTIONS"
+          echo "Manual Increment: $MANUAL_INCREMENT"
+          echo "Total Commits: $TOTAL_COMMITS"
 
-          # ✅ Store initial total commits
-          echo "TOTAL_COMMITS=$HISTORICAL_COMMITS" >> $GITHUB_ENV
+          # ✅ Store total commits in environment variable
+          echo "TOTAL_COMMITS=$TOTAL_COMMITS" >> $GITHUB_ENV
 
       - name: Update README.md with New Badges
         run: |
@@ -98,5 +125,5 @@ jobs:
           git config --global user.email "actions@github.com"
 
           git add README.md .commit_counter .workflow_counter
-          git commit -m "Reset commit tracking to start fresh from 160 commits" || exit 0
+          git commit -m "Fixed commit tracking: started from 161 and added manual increment" || exit 0
           git push origin main
