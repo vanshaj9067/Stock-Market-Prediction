@@ -1,36 +1,30 @@
 # ================================================================
-#  GitHub Actions Workflow: Update Repo Info Badges
+#  GitHub Actions Workflow: Update Repo Age Badge
 # ================================================================
-#  🔹 This workflow automatically updates the repository age and 
-#     total commit count in the README.md file.
+#  🔹 This workflow automatically updates the repository age badge  
+#     in the README.md file.
 #  
 #  ✅ Runs daily at midnight (00:00 UTC) to update repo age.
-#  ✅ Runs on every push to update the total commits count.
 #  ✅ Can be manually triggered from the GitHub Actions UI.
 #  
 #  📌 Steps:
 #  1️⃣ Fetches the repository creation date.
 #  2️⃣ Calculates the repository age (Years, Months, Days).
-#  3️⃣ Tracks and updates the total commit count.
-#  4️⃣ Uses `.commit_counter` to persist workflow runs.
-#  5️⃣ Introduces `WORKFLOW_EXECUTIONS` to track workflow runs separately.
-#  6️⃣ Adds `manual_increment` for manual commit additions if GitHub Actions fail.
-#  7️⃣ Updates the badges in the README.md dynamically.
-#  8️⃣ Commits and pushes the updated README.md file back to the repository.
+#  3️⃣ Updates the repo age badge in the README.md.
+#  4️⃣ Commits and pushes the updated README.md file back to the repository.
 #  
 #  🚀 No personal access token (PAT) required! Uses `GITHUB_TOKEN`.
 # ================================================================
 
-name: Update Repo Info
+name: Update Repo Age
 
 on:
   schedule:
     - cron: "0 0 * * *"  # ✅ Runs daily at midnight to update repo age
-  push:                   # ✅ Runs on every push (counts new commits)
   workflow_dispatch:       # ✅ Allows manual trigger
 
 jobs:
-  fetch-info:
+  update-age:
     runs-on: ubuntu-latest
     permissions: write-all  # ✅ Allows GitHub Actions to push changes
 
@@ -58,64 +52,16 @@ jobs:
           REPO_AGE="${AGE_YEARS}Y ${AGE_MONTHS}M ${AGE_REMAINING_DAYS}D"
           echo "REPO_AGE=$REPO_AGE" >> $GITHUB_ENV
 
-      - name: **Track Workflow Runs & Commits**
-        id: track_commits
+      - name: Update README.md with New Badge
         run: |
-          # ✅ Set the starting commit count
-          HISTORICAL_COMMITS=161  
-
-          # ✅ Check if `.commit_counter` exists, otherwise initialize it
-          if [ ! -f .commit_counter ]; then
-            echo "0" > .commit_counter
-          fi
-
-          # ✅ Read previous commit count
-          WORKFLOW_RUNS=$(cat .commit_counter)
-
-          # ✅ Check if `.workflow_counter` exists, otherwise initialize it
-          if [ ! -f .workflow_counter ]; then
-            echo "0" > .workflow_counter
-          fi
-
-          # ✅ Read previous workflow execution count
-          WORKFLOW_EXECUTIONS=$(cat .workflow_counter)
-
-          # ✅ Set manual increment in case workflow fails
-          MANUAL_INCREMENT=0
-
-          # ✅ Increment both counters
-          WORKFLOW_RUNS=$((WORKFLOW_RUNS + 1))
-          WORKFLOW_EXECUTIONS=$((WORKFLOW_EXECUTIONS + 1))
-
-          # ✅ Update total commits count
-          TOTAL_COMMITS=$((HISTORICAL_COMMITS + WORKFLOW_RUNS + WORKFLOW_EXECUTIONS + MANUAL_INCREMENT))
-
-          # ✅ Save new counts to files
-          echo "$WORKFLOW_RUNS" > .commit_counter
-          echo "$WORKFLOW_EXECUTIONS" > .workflow_counter
-
-          echo "Historical Commits: $HISTORICAL_COMMITS"
-          echo "Workflow Runs: $WORKFLOW_RUNS"
-          echo "Workflow Executions: $WORKFLOW_EXECUTIONS"
-          echo "Manual Increment: $MANUAL_INCREMENT"
-          echo "Total Commits: $TOTAL_COMMITS"
-
-          # ✅ Store total commits in environment variable
-          echo "TOTAL_COMMITS=$TOTAL_COMMITS" >> $GITHUB_ENV
-
-      - name: Update README.md with New Badges
-        run: |
-          # Colors for Badges
+          # Color for Repo Age Badge
           AGE_BADGE_COLOR="%23FFA07A"  # Sunset Orange
-          COMMITS_BADGE_COLOR="%23B19CD9"  # Vibrant Lilac
 
-          # Generate Badge URLs
+          # Generate Badge URL
           AGE_BADGE_URL="https://img.shields.io/badge/Repo%20Age-$REPO_AGE-$AGE_BADGE_COLOR?style=for-the-badge&logo=github"
-          COMMITS_BADGE_URL="https://img.shields.io/badge/Total%20Commits-$TOTAL_COMMITS-$COMMITS_BADGE_COLOR?style=for-the-badge&logo=git"
 
-          # Replace Badges in README
+          # Replace Badge in README
           sed -i 's|https://img.shields.io/badge/Repo%20Age-[^?]*|'"$AGE_BADGE_URL"'|' README.md
-          sed -i 's|https://img.shields.io/badge/Total%20Commits-[^?]*|'"$COMMITS_BADGE_URL"'|' README.md
 
       - name: Commit & Push Changes
         env:
@@ -124,6 +70,6 @@ jobs:
           git config --global user.name "github-actions"
           git config --global user.email "actions@github.com"
 
-          git add README.md .commit_counter .workflow_counter
-          git commit -m "Fixed commit tracking: started from 161 and added manual increment" || exit 0
+          git add README.md
+          git commit -m "Updated repository age badge" || exit 0
           git push origin main
