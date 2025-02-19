@@ -3,6 +3,7 @@
 This repository is for our 7th-semester project, **Advanced Stock Price Forecasting Using a Hybrid Model of Numerical and Textual Analysis**. It uses Python, NLP (NLTK, spaCy), machine learning models, Grafana, InfluxDB, and Streamlit for comprehensive data analysis and visualization.
 
 <p align="center">
+  
   <!-- Repository Size -->
   <a href="https://github.com/madhurimarawat/Stock-Market-Prediction">
     <img src="https://img.shields.io/github/repo-size/madhurimarawat/Stock-Market-Prediction?color=%23FFB6C1&label=Repo%20Size&labelColor=%23F39FBB&style=for-the-badge&logo=github" alt="Repo Size">
@@ -50,8 +51,8 @@ This repository is for our 7th-semester project, **Advanced Stock Price Forecast
   </a>
 
   <!-- License -->
-  <a href="https://github.com/madhurimarawat/Stock-Market-Prediction/blob/main/LICENSE">
-    <img src="https://img.shields.io/github/license/madhurimarawat/Stock-Market-Prediction?color=%23FF869A&label=License&labelColor=%23E76C88&style=for-the-badge&logo=open-source-initiative" alt="License">
+  <a href="https://github.com/madhurimarawat/Cloud-Computing/blob/main/LICENSE">
+    <img src="https://img.shields.io/github/license/madhurimarawat/Stock-Market-Prediction?color=%23FF869&label=License&labelColor=%23E76C88&style=for-the-badge&logo=open-source-initiative" alt="License">
   </a>
 
   <!-- Last Commit -->
