@@ -61,7 +61,7 @@ jobs:
         id: get_commits
         run: |
           # ✅ Set historical commits count before workflow started
-          HISTORICAL_COMMITS=148  
+          HISTORICAL_COMMITS=149  
 
           # ✅ Check if commit counter file exists, otherwise initialize it
           if [ -f .commit_counter ]; then
@@ -71,7 +71,7 @@ jobs:
           fi
 
           # ✅ Increment workflow run count
-          WORKFLOW_RUNS=$((WORKFLOW_RUNS + 2))
+          WORKFLOW_RUNS=$((WORKFLOW_RUNS + 1))
 
           # ✅ Update total commits count
           TOTAL_COMMITS=$((HISTORICAL_COMMITS + WORKFLOW_RUNS))
