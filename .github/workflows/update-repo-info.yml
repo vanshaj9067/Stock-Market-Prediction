@@ -1,79 +1,62 @@
-name: Update Repo Info  # Workflow name
+name: Update Repo Info
 
 on:
   schedule:
-    - cron: "0 0 * * *"  # Runs the workflow daily at midnight UTC
-  workflow_dispatch:      # Allows manual execution from the GitHub Actions UI
+    - cron: "0 0 * * *"  # Runs daily at midnight UTC
+  workflow_dispatch:      # Allows manual trigger
 
 jobs:
   fetch-info:
-    runs-on: ubuntu-latest  # Runs on the latest Ubuntu environment
+    runs-on: ubuntu-latest
+    permissions: write-all  # ✅ Allows GitHub Actions to push changes
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v4  # Fetches the repository content
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}  # ✅ Uses GitHub's built-in token
 
       - name: Get Repo Creation Date
         id: repo_info
         run: |
-          # Fetch repository creation date using GitHub API
           CREATION_DATE=$(curl -s https://api.github.com/repos/madhurimarawat/Stock-Market-Prediction | jq -r '.created_at' | cut -d'T' -f1)
-          
-          # Print the fetched creation date (for debugging/logging purposes)
-          echo "Repository Creation Date: $CREATION_DATE"
-          
-          # Store the creation date as an environment variable for later use
           echo "CREATION_DATE=$CREATION_DATE" >> $GITHUB_ENV
 
       - name: Calculate Repository Age
         id: calculate_age
         run: |
-          # Convert creation date to UNIX timestamp
           START_DATE=$(date -d "$CREATION_DATE" +%s)
           CURRENT_DATE=$(date +%s)
-          
-          # Calculate age in days, years, months, and remaining days
           AGE_DAYS=$(( (CURRENT_DATE - START_DATE) / 86400 ))
           AGE_YEARS=$(( AGE_DAYS / 365 ))
           AGE_MONTHS=$(( (AGE_DAYS % 365) / 30 ))
           AGE_REMAINING_DAYS=$(( AGE_DAYS % 30 ))
-          
-          # Format repo age string (e.g., "1Y 2M 5D")
           REPO_AGE="${AGE_YEARS}Y ${AGE_MONTHS}M ${AGE_REMAINING_DAYS}D"
-          
-          # Print calculated repo age for debugging
-          echo "Repository Age: $REPO_AGE"
-          
-          # Store repo age as an environment variable
           echo "REPO_AGE=$REPO_AGE" >> $GITHUB_ENV
 
       - name: Get Total Commits
         id: get_commits
         run: |
-          # Fetch the total number of commits from all contributors
           TOTAL_COMMITS=$(curl -s "https://api.github.com/repos/madhurimarawat/Stock-Market-Prediction/stats/contributors" | jq '[.[].total] | add')
-          
-          # Print fetched total commits (for debugging)
-          echo "Total Commits: $TOTAL_COMMITS"
-          
-          # Store total commits as an environment variable
           echo "TOTAL_COMMITS=$TOTAL_COMMITS" >> $GITHUB_ENV
 
       - name: Update README.md with New Badges
         run: |
-          # Define badge colors
+          # Colors for Badges
           AGE_BADGE_COLOR="%23FFA07A"  # Sunset Orange
           COMMITS_BADGE_COLOR="%23B19CD9"  # Vibrant Lilac
 
-          # Generate dynamic badge URLs
+          # Generate Badge URLs
           AGE_BADGE_URL="https://img.shields.io/badge/Repo%20Age-$REPO_AGE-$AGE_BADGE_COLOR?style=for-the-badge&logo=github"
           COMMITS_BADGE_URL="https://img.shields.io/badge/Total%20Commits-$TOTAL_COMMITS-$COMMITS_BADGE_COLOR?style=for-the-badge&logo=git"
 
-          # Update badges in README.md
+          # Replace Badges in README
           sed -i 's|https://img.shields.io/badge/Repo%20Age-[^?]*|'"$AGE_BADGE_URL"'|' README.md
           sed -i 's|https://img.shields.io/badge/Total%20Commits-[^?]*|'"$COMMITS_BADGE_URL"'|' README.md
 
       - name: Commit & Push Changes
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # ✅ Uses GitHub's built-in token
         run: |
           # Configure Git user
           git config --global user.name "github-actions"
@@ -85,5 +68,5 @@ jobs:
           # Commit changes (exit without error if no changes)
           git commit -m "Updated Repository Age & Total Commits Badges" || exit 0
 
-          # Push changes back to the repository
-          git push
+          # Push changes back to the repository using GITHUB_TOKEN
+          git push origin main
