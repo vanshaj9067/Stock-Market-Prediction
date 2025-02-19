@@ -13,7 +13,7 @@
 #  2️⃣ Calculates the repository age (Years, Months, Days).
 #  3️⃣ Tracks and updates the total commit count.
 #  4️⃣ Uses `.commit_counter` to persist workflow runs.
-#  5️⃣ Fixes off-by-one issue by adding `+1` to workflow runs.
+#  5️⃣ Fixes off-by-one issue by ensuring counter starts at `1`.
 #  6️⃣ Updates the badges in the README.md dynamically.
 #  7️⃣ Commits and pushes the updated README.md file back to the repository.
 #  
@@ -63,18 +63,18 @@ jobs:
           # ✅ Set historical commits count before workflow started
           HISTORICAL_COMMITS=149  
 
-          # ✅ Check if commit counter file exists, otherwise initialize it
+          # ✅ Check if commit counter file exists, otherwise initialize it to 1
           if [ -f .commit_counter ]; then
             WORKFLOW_RUNS=$(cat .commit_counter)
           else
-            WORKFLOW_RUNS=0
+            WORKFLOW_RUNS=1
           fi
 
           # ✅ Increment workflow run count
           WORKFLOW_RUNS=$((WORKFLOW_RUNS + 1))
 
           # ✅ Update total commits count
-          TOTAL_COMMITS=$((HISTORICAL_COMMITS + WORKFLOW_RUNS))
+          TOTAL_COMMITS=$((HISTORICAL_COMMITS + WORKFLOW_RUNS - 1))
 
           # ✅ Save new count to file
           echo "$WORKFLOW_RUNS" > .commit_counter
