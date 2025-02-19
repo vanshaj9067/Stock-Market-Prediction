@@ -2,8 +2,9 @@ name: Update Repo Info
 
 on:
   schedule:
-    - cron: "0 0 * * *"  # Runs daily at midnight UTC
-  workflow_dispatch:      # Allows manual trigger
+    - cron: "0 0 * * *"  # ✅ Runs daily at midnight to update repo age
+  push:                   # ✅ Runs on every push (counts new commits)
+  workflow_dispatch:       # ✅ Allows manual trigger
 
 jobs:
   fetch-info:
@@ -37,7 +38,7 @@ jobs:
       - name: Get Total Commits
         id: get_commits
         run: |
-          TOTAL_COMMITS=$(curl -s "https://api.github.com/repos/madhurimarawat/Stock-Market-Prediction/stats/contributors" | jq '[.[].total] | add')
+          TOTAL_COMMITS=$(curl -s "https://api.github.com/repos/madhurimarawat/Stock-Market-Prediction" | jq -r '.network_count')
           echo "TOTAL_COMMITS=$TOTAL_COMMITS" >> $GITHUB_ENV
 
       - name: Update README.md with New Badges
@@ -58,15 +59,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # ✅ Uses GitHub's built-in token
         run: |
-          # Configure Git user
           git config --global user.name "github-actions"
           git config --global user.email "actions@github.com"
 
-          # Add modified README.md
           git add README.md
-
-          # Commit changes (exit without error if no changes)
           git commit -m "Updated Repository Age & Total Commits Badges" || exit 0
-
-          # Push changes back to the repository using GITHUB_TOKEN
           git push origin main
