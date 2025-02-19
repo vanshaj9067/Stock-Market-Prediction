@@ -58,7 +58,20 @@ jobs:
       - name: Get Total Commits
         id: get_commits
         run: |
-          TOTAL_COMMITS=$(curl -s "https://api.github.com/repos/madhurimarawat/Stock-Market-Prediction/commits?per_page=1" | jq -r '.[0].sha' | xargs -I {} curl -s "https://api.github.com/repos/madhurimarawat/Stock-Market-Prediction/commits/{}" | jq -r '.stats.total')
+          # ✅ Base commit count before workflow started
+          BASE_COMMITS=142  
+
+          # ✅ Get new commit count since workflow started
+          NEW_COMMITS=$(curl -s "https://api.github.com/repos/madhurimarawat/Stock-Market-Prediction/commits?per_page=100" | jq 'length')
+
+          # ✅ Add base commits to new commits
+          TOTAL_COMMITS=$((BASE_COMMITS + NEW_COMMITS))
+
+          echo "Base Commits: $BASE_COMMITS"
+          echo "New Commits: $NEW_COMMITS"
+          echo "Total Commits: $TOTAL_COMMITS"
+
+          # ✅ Store total commits in environment variable
           echo "TOTAL_COMMITS=$TOTAL_COMMITS" >> $GITHUB_ENV
 
       - name: Update README.md with New Badges
