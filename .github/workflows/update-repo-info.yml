@@ -1,0 +1,25 @@
+name: Update Repo Info Badges
+
+on:
+  schedule:
+    - cron: "0 0 * * *"  # Runs daily at midnight UTC
+  workflow_dispatch:      # Allows manual trigger
+
+jobs:
+  fetch-info:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Get Repo Creation Date
+        id: repo_info
+        run: |
+          CREATION_DATE=$(curl -s https://api.github.com/repos/madhurimarawat/Stock-Market-Prediction | jq -r '.created_at' | cut -d'T' -f1)
+          echo "Repository Creation Date: $CREATION_DATE"
+          echo "CREATION_DATE=$CREATION_DATE" >> $GITHUB_ENV
+
+      - name: Get Total Commits
+        id: get_commits
+        run: |
+          TOTAL_COMMITS=$(curl -s "https://api.github.com/repos/madhurimarawat/Stock-Market-Prediction/stats/contributors" | jq '[.[].total] | add')
+          echo "Total Commits: $TOTAL_COMMITS"
+          echo "TOTAL_COMMITS=$TOTAL_COMMITS" >> $GITHUB_ENV
