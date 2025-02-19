@@ -62,17 +62,17 @@ This repository is for our 7th-semester project, **Advanced Stock Price Forecast
 
 <!-- Repository Age -->
 <a href="https://github.com/madhurimarawat/Stock-Market-Prediction">
-  <img src="https://img.shields.io/badge/Repo%20Age-6Y%201M%2011D-%23FFA07A?style=for-the-badge&logo=github" alt="Repository Age">
+  <img src="https://img.shields.io/badge/Repo%20Age-PLACEHOLDER-%23FFA07A?style=for-the-badge&logo=github" alt="Repository Age">
 </a>
 
 <!-- Total Commits -->
 <a href="https://github.com/madhurimarawat/Stock-Market-Prediction/commits/main">
-  <img src="https://img.shields.io/badge/Total%20Commits-XXX-%23B19CD9?style=for-the-badge&logo=git" alt="Total Commits">
+  <img src="https://img.shields.io/badge/Total%20Commits-PLACEHOLDER-%23B19CD9?style=for-the-badge&logo=git" alt="Total Commits">
 </a>
 
 <!-- Workflow Status -->
 <a href="https://github.com/madhurimarawat/Stock-Market-Prediction/actions/workflows/update-repo-age.yml">
-  <img src="https://img.shields.io/github/actions/workflow/status/madhurimarawat/Stock-Market-Prediction/update-repo-age.yml?color=%2372DDF7&label=Workflow&labelColor=%235CC1E7&style=for-the-badge&logo=github" alt="Workflow Status">
+  <img src="https://img.shields.io/github/actions/workflow/status/madhurimarawat/Stock-Market-Prediction/update-repo-info.yml?color=%2372DDF7&label=Workflow&labelColor=%235CC1E7&style=for-the-badge&logo=github" alt="Workflow Status">
 </a>
 
 
