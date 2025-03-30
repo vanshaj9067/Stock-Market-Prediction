@@ -696,7 +696,9 @@ def display_numerical_model_performance():
 def display_numerical_model_visualization(ticker):
     # Define the dataset and model paths
     dataset_path = os.path.join(DATASET_DIR, f"Preprocessed_{ticker}_Dataset.csv")
-    model_path = os.path.join("Models", "pkl_models", f"{ticker}_Ensemble_Model.pkl")
+    model_path = os.path.join(
+        DATASET_DIR_1, "Models", "pkl_models", f"{ticker}_Ensemble_Model.pkl"
+    )
 
     # Check if the dataset file exists
     if not os.path.isfile(dataset_path):
