@@ -73,6 +73,10 @@ import os
 # Importing datetime for working with timestamps and date ranges
 from datetime import datetime, timedelta
 
+# Importing base64 for encoding and decoding binary data
+# We'll use base64 encoding to embed binary CSV data as text in our HTML download link.
+import base64
+
 
 # --- MACHINE LEARNING & MODELING ---
 
@@ -1925,54 +1929,119 @@ class StockPricePredictor:
         st.pyplot(plt.gcf())  # Display in Streamlit
 
     def save_data_csv(self):
-        # Save predictions to CSV and provide download button
-        if self.predictions:
-            start_date = self.data.index[-1] + timedelta(days=1)
-            date_range = pd.date_range(
-                start=start_date, periods=self.forecast_days, freq="B"
-            )  # Business days
+        """
+        Save forecasted prediction data into CSV format and render a styled HTML download button.
+        """
 
-            df_output = pd.DataFrame(
-                {"Date": date_range.strftime("%Y-%m-%d")}
-            )  # Create DataFrame
-            df_output["Ticker"] = self.ticker.upper()
+        # Check if predictions and CSV are already stored to avoid recomputation
+        if (
+            "predictions_df" not in st.session_state
+            or "csv_data" not in st.session_state
+        ):
+            if self.predictions:
+                # Create date range for forecasted days (weekdays only)
+                start_date = self.data.index[-1] + timedelta(days=1)
+                date_range = pd.date_range(
+                    start=start_date, periods=self.forecast_days, freq="B"
+                )
 
-            # Add model predictions
-            for model_name, values in self.predictions.items():
-                if len(values) == len(date_range):
-                    df_output[model_name] = [round(price, 4) for price in values]
-                else:
-                    st.warning(
-                        f"Model '{model_name}' returned {len(values)} predictions, expected {len(date_range)}."
-                    )
+                # Prepare output DataFrame with date and ticker info
+                df_output = pd.DataFrame({"Date": date_range.strftime("%Y-%m-%d")})
+                df_output["Ticker"] = self.ticker.upper()
 
-            # Format filename
+                # Add model predictions to the DataFrame
+                for model_name, values in self.predictions.items():
+                    if len(values) == len(date_range):
+                        df_output[model_name] = [round(price, 4) for price in values]
+                    else:
+                        st.warning(
+                            f"Model '{model_name}' returned {len(values)} predictions, expected {len(date_range)}."
+                        )
+
+                # Save output and CSV to session state
+                st.session_state["predictions_df"] = df_output
+                st.session_state["csv_data"] = df_output.to_csv(index=False).encode(
+                    "utf-8"
+                )
+
+        # Retrieve saved data from session state
+        df_output = st.session_state.get("predictions_df")
+        csv_data = st.session_state.get("csv_data")
+
+        # If data is available, generate a downloadable link
+        if df_output is not None and csv_data is not None:
             start_str = self.start_date_final.strftime("%d-%m-%y")
             end_str = self.end_date_final.strftime("%d-%m-%y")
 
-            csv = df_output.to_csv(index=False).encode("utf-8")  # Convert to CSV
-            st.download_button(
-                label="📥 Download Forecasted Data as CSV",
-                data=csv,
-                file_name=f"{self.ticker}_Predictions__{start_str}_to_{end_str}.csv",
-                mime="text/csv",
-            )
+            # Base64 encode for browser download
+            b64 = base64.b64encode(csv_data).decode()
+            file_name = f"{self.ticker}_Predictions__{start_str}_to_{end_str}.csv"
+
+            # Custom HTML button for download
+            download_link = f"""
+            <a href="data:file/csv;base64,{b64}" download="{file_name}" style="
+                display: inline-block;
+                background-color: rgb(38, 39, 48);
+                color: white;
+                padding: 0.7rem 1.2rem;
+                font-size: 1rem;
+                font-weight: 600;
+                border: none;
+                border-radius: 0.5rem;
+                text-align: center;
+                text-decoration: none;
+                transition: background-color 0.2s ease, transform 0.1s ease;
+                box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 4px;
+            " onmouseover="this.style.backgroundColor='red'" 
+            onmouseout="this.style.backgroundColor='rgb(38, 39, 48)'" 
+            onmousedown="this.style.transform='scale(0.98)'" 
+            onmouseup="this.style.transform='scale(1)'">
+                📥 Download Forecasted Data as CSV
+            </a>
+            """
+
+            # Render HTML download link in the app
+            st.markdown(download_link, unsafe_allow_html=True)
 
     def export_results(self):
-        # Export metrics and predictions to Excel file
+        """
+        Export model accuracy metrics as CSV using a styled HTML download button.
+        """
+
+        # Format date range for file naming
         start_str = self.start_date_final.strftime("%d-%m-%y")
         end_str = self.end_date_final.strftime("%d-%m-%y")
-        filename = f"{self.ticker}_Metrics_{start_str}_to_{end_str}.xlsx"
 
-        with pd.ExcelWriter(filename) as writer:
-            self.metrics.to_excel(
-                writer, sheet_name="Model_Accuracy", index=False
-            )  # Metrics sheet
-            pred_df = pd.DataFrame(self.predictions)
-            pred_df.index = [f"Day {i+1}" for i in range(self.forecast_days)]
-            pred_df.to_excel(writer, sheet_name="Predictions")  # Predictions sheet
+        # Encode metrics DataFrame to CSV
+        metrics_csv = self.metrics.to_csv(index=False).encode("utf-8")
+        b64 = base64.b64encode(metrics_csv).decode()
+        file_name = f"{self.ticker}_Metrics_{start_str}_to_{end_str}.csv"
 
-        st.success(f"Exported predictions and metrics to {filename}")  # Notify user
+        # Custom HTML button for download
+        download_link = f"""
+        <a href="data:file/csv;base64,{b64}" download="{file_name}" style="
+            display: inline-block;
+            background-color: rgb(38, 39, 48);
+            color: white;
+            padding: 0.7rem 1.2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 0.5rem;
+            text-align: center;
+            text-decoration: none;
+            transition: background-color 0.2s ease, transform 0.1s ease;
+            box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 4px;
+        " onmouseover="this.style.backgroundColor='red'" 
+        onmouseout="this.style.backgroundColor='rgb(38, 39, 48)'" 
+        onmousedown="this.style.transform='scale(0.98)'" 
+        onmouseup="this.style.transform='scale(1)'">
+            📊 Download Model Accuracy Metrics as CSV
+        </a>
+        """
+
+        # Render the custom HTML button
+        st.markdown(download_link, unsafe_allow_html=True)
 
     def alert_changes(self):
         # Trigger alert if sharp price change is predicted
