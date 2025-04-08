@@ -1,0 +1,4 @@
+Model,R2 Score,MAE,RMSE
+Linear Regression,0.769,5.099,6.751
+Random Forest,0.622,5.774,8.638
+SVR,-0.061,10.878,14.476
