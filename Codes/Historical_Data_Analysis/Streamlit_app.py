@@ -70,6 +70,10 @@ import numpy as np
 # Importing OS module for handling file and directory paths
 import os
 
+# tempfile: Used to create temporary files and directories
+# Especially useful for creating download-ready files without saving them permanently
+import tempfile
+
 # Importing datetime for working with timestamps and date ranges
 from datetime import datetime, timedelta
 
