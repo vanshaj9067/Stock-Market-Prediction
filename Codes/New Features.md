@@ -45,9 +45,10 @@
 
 ## 6️⃣ 🔍 Dynamic Stock Tracking Feature
 
-### 🛠️ **Technology:** Fyers API (Data API & WebSockets), NSEPython, ClickHouse DB
+### 🛠️ **Technology:** Yahoo Finance Library, PyTorch Models
 
-### 🚧 **Status:** Pending
+### ✅ **Status:** Done
 
-- Allow users to input custom stock names and track them dynamically.
-- Use ClickHouse DB for efficient WebSocket data storage & retrieval.
+- Users can input custom stock names and track them dynamically.
+- Utilized Yahoo Finance Library for stock data retrieval.
+- Integrated PyTorch models for stock prediction and analysis.
