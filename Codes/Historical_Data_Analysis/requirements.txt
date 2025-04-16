@@ -10,4 +10,3 @@ seaborn
 torch
 openpyxl
 streamlit
-base64
