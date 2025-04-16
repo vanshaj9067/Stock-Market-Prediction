@@ -3,7 +3,7 @@ Author: Madhurima Rawat
 
 This Streamlit application is designed for a comprehensive stock market prediction project. It includes functionality for navigating different project sections, visualizing data, evaluating models, and predicting stock prices using preprocessed datasets. The app incorporates background customization, dropdown and radio button inputs, and interactive visualizations.
 
-This script is used for the deployed app on Streamlit.
+This script is used to launch the app on Streamlit locally (for local testing).
 
 Libraries used:
 - Streamlit: For building the web-based interactive application framework.
@@ -436,7 +436,7 @@ def display_company_data_table():
 
 
 # Directory containing the preprocessed datasets
-DATASET_DIR = "Codes/Historical_Data_Analysis/Preprocessed_Dataset"
+DATASET_DIR = "Preprocessed_Dataset"
 
 
 # Function to load dataset based on ticker symbol and display its information
@@ -755,9 +755,7 @@ def display_numerical_model_performance():
 def display_numerical_model_visualization(ticker):
     # Define the dataset and model paths
     dataset_path = os.path.join(DATASET_DIR, f"Preprocessed_{ticker}_Dataset.csv")
-    model_path = os.path.join(
-        DATASET_DIR_1, "Models", "pkl_models", f"{ticker}_Ensemble_Model.pkl"
-    )
+    model_path = os.path.join("Models", "pkl_models", f"{ticker}_Ensemble_Model.pkl")
 
     # Check if the dataset file exists
     if not os.path.isfile(dataset_path):
@@ -992,17 +990,11 @@ def display_numerical_model_visualization(ticker):
     )
 
 
-# Directory containing the preprocessed datasets
-DATASET_DIR_1 = "Codes/Historical_Data_Analysis"
-
-
 # Define the function for displaying the model prediction
 def display_numerical_model_predicted(ticker, open_price, high, low, volume):
     # Define dataset and model paths
     dataset_path = os.path.join(DATASET_DIR, f"Preprocessed_{ticker}_Dataset.csv")
-    model_path = os.path.join(
-        DATASET_DIR_1, "Models", "pkl_models", f"{ticker}_Ensemble_Model.pkl"
-    )
+    model_path = os.path.join("Models", "pkl_models", f"{ticker}_Ensemble_Model.pkl")
 
     # Check if the dataset file exists
     if not os.path.isfile(dataset_path):
@@ -1182,7 +1174,7 @@ def display_text_model_visualization():
         
         <!-- Image 1 -->
         <div style="text-align:center;">
-            <img src="https://github.com/madhurimarawat/Stock-Market-Prediction/raw/main/Codes/Historical_Data_Analysis\Textual_Analysis\Transparent_Plots\Most_Frequent_Words_in_News_Articles.png" width="100%" alt="Model Visualization Snapshot 1" title="Model Visualization Snapshot 1" />
+            <img src="https://github.com/madhurimarawat/Stock-Market-Prediction/raw/main/Codes/Historical_Data_Analysis\Textual_Analysis\Plots\Most_Frequent_Words_in_News_Articles.png" width="100%" alt="Model Visualization Snapshot 1" title="Model Visualization Snapshot 1" />
             <br><br>
         </div>
 
@@ -1213,15 +1205,9 @@ def display_text_model_visualization():
 def display_text_model_prediction():
     # File paths for the dataset and model
     csv_path = os.path.join(
-        "Codes",
-        "Historical_Data_Analysis",
-        "Textual_Analysis",
-        "Dataset",
-        "Preprocessed_Text_Dataset.csv",
+        "Textual_Analysis", "Dataset", "Preprocessed_Text_Dataset.csv"
     )
     model_path = os.path.join(
-        "Codes",
-        "Historical_Data_Analysis",
         "Textual_Analysis",
         "Models",
         "Classification",
@@ -1247,7 +1233,6 @@ def display_text_model_prediction():
         return
 
     # Step 3: Vectorize the cleaned text data using TF-IDF
-
     vectorizer = TfidfVectorizer(max_features=5000)
     X_transformed = vectorizer.fit_transform(data["cleaned_text"]).toarray()
 
@@ -1412,8 +1397,6 @@ def display_hybrid_model_visualization():
 def display_hybrid_model_prediction():
     # File path for the pre-trained model
     model_path = os.path.join(
-        "Codes",
-        "Historical_Data_Analysis",
         "Hybrid_Model",
         "Models",
         "Combined",
@@ -1655,7 +1638,7 @@ def display_project_dashboard():
         <img src="https://github.com/madhurimarawat/Stock-Market-Prediction/raw/main/Codes/Historical_Data_Analysis/Database_Dashboard_Snapshots/Grafana_Dashboard/Textual_Analysis/Dashboard_1.png" width="100%" alt="Textual Analysis Snapshot 1" title="Textual Analysis Snapshot 1" />
         <br><br>
         <img src="https://github.com/madhurimarawat/Stock-Market-Prediction/raw/main/Codes/Historical_Data_Analysis/Database_Dashboard_Snapshots/Grafana_Dashboard/Textual_Analysis/Dashboard_2.png" width="100%" alt="Textual Analysis Snapshot 2" title="Textual Analysis Snapshot 2" />
-        <br><br>
+        <br><br
         """,
         unsafe_allow_html=True,
     )
