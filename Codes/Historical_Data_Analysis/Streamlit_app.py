@@ -73,6 +73,10 @@ import os
 # Importing datetime for working with timestamps and date ranges
 from datetime import datetime, timedelta
 
+# Importing base64 for encoding and decoding binary data
+# We'll use base64 encoding to embed binary CSV data as text in our HTML download link.
+import base64
+
 
 # --- MACHINE LEARNING & MODELING ---
 
