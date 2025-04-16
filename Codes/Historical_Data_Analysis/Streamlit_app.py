@@ -1943,26 +1943,19 @@ class StockPricePredictor:
 
     def save_data_csv(self):
         """
-        Save forecasted prediction data into CSV format and render a styled HTML download button.
+        Save forecasted prediction data into a temporary CSV file and render a styled HTML download button.
         """
 
-        # Check if predictions and CSV are already stored to avoid recomputation
-        if (
-            "predictions_df" not in st.session_state
-            or "csv_data" not in st.session_state
-        ):
+        if "predictions_df" not in st.session_state:
             if self.predictions:
-                # Create date range for forecasted days (weekdays only)
                 start_date = self.data.index[-1] + timedelta(days=1)
                 date_range = pd.date_range(
                     start=start_date, periods=self.forecast_days, freq="B"
                 )
 
-                # Prepare output DataFrame with date and ticker info
                 df_output = pd.DataFrame({"Date": date_range.strftime("%Y-%m-%d")})
                 df_output["Ticker"] = self.ticker.upper()
 
-                # Add model predictions to the DataFrame
                 for model_name, values in self.predictions.items():
                     if len(values) == len(date_range):
                         df_output[model_name] = [round(price, 4) for price in values]
@@ -1971,26 +1964,26 @@ class StockPricePredictor:
                             f"Model '{model_name}' returned {len(values)} predictions, expected {len(date_range)}."
                         )
 
-                # Save output and CSV to session state
                 st.session_state["predictions_df"] = df_output
-                st.session_state["csv_data"] = df_output.to_csv(index=False).encode(
-                    "utf-8"
-                )
 
-        # Retrieve saved data from session state
         df_output = st.session_state.get("predictions_df")
-        csv_data = st.session_state.get("csv_data")
 
-        # If data is available, generate a downloadable link
-        if df_output is not None and csv_data is not None:
+        if df_output is not None:
             start_str = self.start_date_final.strftime("%d-%m-%y")
             end_str = self.end_date_final.strftime("%d-%m-%y")
-
-            # Base64 encode for browser download
-            b64 = base64.b64encode(csv_data).decode()
             file_name = f"{self.ticker}_Predictions__{start_str}_to_{end_str}.csv"
 
-            # Custom HTML button for download
+            # Create a NamedTemporaryFile
+            with tempfile.NamedTemporaryFile(
+                delete=False, suffix=".csv", mode="w", encoding="utf-8"
+            ) as tmp_file:
+                df_output.to_csv(tmp_file.name, index=False)
+                tmp_file_path = tmp_file.name
+
+            # Read back file and base64 encode
+            with open(tmp_file_path, "rb") as f:
+                b64 = base64.b64encode(f.read()).decode()
+
             download_link = f"""
             <a href="data:file/csv;base64,{b64}" download="{file_name}" style="
                 display: inline-block;
@@ -2013,7 +2006,6 @@ class StockPricePredictor:
             </a>
             """
 
-            # Render HTML download link in the app
             st.markdown(download_link, unsafe_allow_html=True)
 
     def export_results(self):
