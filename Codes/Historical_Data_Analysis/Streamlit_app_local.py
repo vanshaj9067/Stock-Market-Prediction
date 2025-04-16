@@ -1733,7 +1733,7 @@ def display_power_bi_dashboard():
     ]
 
     for url in image_urls:
-        st.image(url, use_column_width=True)
+        st.image(url, use_container_width=True)
 
 
 # Class for real time stock data fetching and prediction
