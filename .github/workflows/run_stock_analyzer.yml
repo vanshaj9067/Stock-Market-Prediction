@@ -1,0 +1,61 @@
+# ================================================================
+#  GitHub Actions Workflow: Run Stock Analyzer Script
+# ================================================================
+#  🔹 This workflow automatically runs the stock prediction analysis  
+#     script at scheduled times or when triggered manually.
+#  
+#  ✅ Runs daily at midnight (00:00 UTC) to analyze real-time stock data.
+#  ✅ Can be manually triggered from the GitHub Actions UI.
+#  
+#  📌 Steps:
+#  1️⃣ Check out the repository to the GitHub Actions runner.
+#  2️⃣ Sets up Python (version 3.10 by default).
+#  3️⃣ Installs any required dependencies listed in `requirements.txt`.
+#  4️⃣ Runs the real-time stock prediction analysis script (`run_analyzer.py`).
+#  
+#  🚀 No personal access token (PAT) required! Uses `GITHUB_TOKEN` for the workflow.
+# ================================================================
+
+name: Run Stock Analyzer Script
+
+# This workflow is designed to run the stock analysis script either manually
+# or automatically every day at 12:00 AM (midnight).
+# The automatic schedule part is commented out by default — you can uncomment it as needed.
+
+on:
+  # Allows manual triggering from the GitHub Actions UI
+  workflow_dispatch:
+
+  # Uncomment below to schedule this workflow to run daily at 12:00 AM UTC (adjust as per timezone)
+  # schedule:
+  #   - cron: '0 0 * * *'  # Runs at 00:00 (midnight) UTC every day
+
+jobs:
+  run-analyzer:
+    name: Execute Real-Time Stock Prediction
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the repository to the GitHub Actions runner
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      # Step 2: Set up Python (adjust version if needed)
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      # Step 3: Install required dependencies from requirements.txt (if exists)
+      - name: Install Dependencies
+        run: |
+          # If a requirements file exists in the current directory, install all listed dependencies
+          if [ -f "requirements.txt" ]; then
+            pip install -r requirements.txt
+          fi
+
+      # Step 4: Run the Python script for stock analysis
+      - name: Run Analyzer Script
+        run: |
+          echo "Running Real-Time Stock Prediction script..."
+          python Codes/Historical_Data_Analysis/Real_Time_Stock_Prediction/run_analyzer.py
