@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-stockteller_analyzer.ipynb
+stockteller_analyzer
 
 📘 Description:
 This Streamlit-based Python app allows users to analyze and forecast stock prices using multiple machine learning models
