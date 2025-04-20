@@ -51,14 +51,20 @@ jobs:
 
       - name: Update README.md Repo Section
         run: |
-          NEW_SECTION="<!-- REPO-SECTION-START -->
-![Repo Age](https://img.shields.io/badge/Repo%20Age-${REPO_AGE// /%20}-%23FFA07A?style=for-the-badge&logo=github)
+          NEW_SECTION="<!-- Repository Age -->
+<!-- REPO-SECTION-START -->
+<a href=\"https://github.com/madhurimarawat/Stock-Market-Prediction/actions/workflows/update-repo-age.yml\">
+  <img src=\"https://img.shields.io/badge/Repo%20Age-${REPO_AGE// /%20}-%23FFA07A?style=for-the-badge&logo=github\" alt=\"Repository Age\">
+</a>
 <!-- REPO-SECTION-END -->"
 
-          # Use awk to replace the section between markers
           awk -v new_section="$NEW_SECTION" '
             BEGIN { in_block=0 }
-            /<!-- REPO-SECTION-START -->/ { print new_section; in_block=1; next }
+            /<!-- REPO-SECTION-START -->/ {
+              print new_section
+              in_block=1
+              next
+            }
             /<!-- REPO-SECTION-END -->/ { in_block=0; next }
             in_block == 0 { print }
           ' README.md > temp.md && mv temp.md README.md
