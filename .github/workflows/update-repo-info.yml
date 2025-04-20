@@ -52,7 +52,6 @@ jobs:
       - name: Update README.md Repo Section
         run: |
           NEW_SECTION="<!-- REPO-SECTION-START -->
-#### 🔄 Repository Info
 ![Repo Age](https://img.shields.io/badge/Repo%20Age-${REPO_AGE// /%20}-%23FFA07A?style=for-the-badge&logo=github)
 <!-- REPO-SECTION-END -->"
 
