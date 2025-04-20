@@ -1,88 +1,107 @@
 # ================================================================
-#  GitHub Actions Workflow: Update Repo Age Badge
+# GitHub Actions Workflow: Update Repo Age Badge
 # ================================================================
-#  🔹 This workflow automatically updates the repository age badge  
-#     in the README.md file.
-#  
-#  ✅ Runs daily at midnight (00:00 UTC) to update repo age.
-#  ✅ Can be manually triggered from the GitHub Actions UI.
-#  
-#  📌 Steps:
+# 🔹 This workflow automatically updates the repository age badge
+#    in the README.md file.
+#
+# ✅ Runs daily at midnight (00:00 UTC) to update repo age.
+# ✅ Can be manually triggered from the GitHub Actions UI.
+#
+# 📌 Steps:
 #  1️⃣ Fetches the repository creation date.
 #  2️⃣ Calculates the repository age (Years, Months, Days).
 #  3️⃣ Ensures a **default repo age** (`0Y 6M 15D`) if workflow fails.
 #  4️⃣ Updates the repo age badge in the README.md.
 #  5️⃣ Commits and pushes the updated README.md file back to the repository.
-#  
-#  🚀 No personal access token (PAT) required! Uses `GITHUB_TOKEN`.
+#
+# 🚀 No personal access token (PAT) required! Uses `GITHUB_TOKEN`.
 # ================================================================
 
 name: Update Repo Age
 
+# Trigger the workflow on a scheduled basis (daily at midnight UTC)
 on:
   schedule:
     - cron: "0 0 * * *"  # ✅ Runs daily at midnight to update repo age
-  workflow_dispatch:       # ✅ Allows manual trigger
+  workflow_dispatch:       # ✅ Allows manual trigger from the GitHub Actions UI
 
 jobs:
   update-age:
+    # The workflow will run on the latest Ubuntu environment
     runs-on: ubuntu-latest
-    permissions: write-all  # ✅ Allows GitHub Actions to push changes
+    permissions: write-all  # ✅ Grants GitHub Actions the permission to push changes
 
     steps:
+      # Step 1: Checkout the repository code to work with the files
       - name: Checkout Repository
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}  # ✅ Uses GitHub's built-in token
+          token: ${{ secrets.GITHUB_TOKEN }}  # ✅ Uses GitHub's built-in token for authentication
 
+      # Step 2: Get the repository's creation date from the GitHub API
       - name: Get Repo Creation Date
         id: repo_info
         run: |
+          # Fetch the creation date using GitHub API
           CREATION_DATE=$(curl -s https://api.github.com/repos/madhurimarawat/Stock-Market-Prediction | jq -r '.created_at' | cut -d'T' -f1)
           
-          # ✅ If API request fails, set a fallback date
+          # ✅ Fallback in case the API request fails or returns an invalid response
           if [ -z "$CREATION_DATE" ] || [ "$CREATION_DATE" = "null" ]; then
             CREATION_DATE="2024-08-08"  # Set a default repo creation date
           fi
 
+          # Export the creation date as an environment variable for subsequent steps
           echo "CREATION_DATE=$CREATION_DATE" >> $GITHUB_ENV
 
+      # Step 3: Calculate the repository's age in years, months, and days
       - name: Calculate Repository Age
         id: calculate_age
         run: |
+          # Convert creation date to Unix timestamp
           START_DATE=$(date -d "$CREATION_DATE" +%s 2>/dev/null || echo "0")
-          CURRENT_DATE=$(date +%s)
+          CURRENT_DATE=$(date +%s)  # Get the current date in Unix timestamp
 
+          # If the date conversion fails, use a default repo age
           if [ "$START_DATE" = "0" ]; then
-            REPO_AGE="0Y 6M 15D"  # ✅ Set default age if calculation fails
+            REPO_AGE="0Y 6M 15D"  # ✅ Default age if calculation fails
           else
+            # Calculate the difference in days
             AGE_DAYS=$(( (CURRENT_DATE - START_DATE) / 86400 ))
+            # Calculate the age in years, months, and remaining days
             AGE_YEARS=$(( AGE_DAYS / 365 ))
             AGE_MONTHS=$(( (AGE_DAYS % 365) / 30 ))
             AGE_REMAINING_DAYS=$(( AGE_DAYS % 30 ))
+            # Format the repository age as 'Y years, M months, D days'
             REPO_AGE="${AGE_YEARS}Y ${AGE_MONTHS}M ${AGE_REMAINING_DAYS}D"
           fi
 
+          # Export the calculated repository age as an environment variable
           echo "REPO_AGE=$REPO_AGE" >> $GITHUB_ENV
 
+      # Step 4: Update the repository age badge in the README.md file
       - name: Update README.md with New Badge
         run: |
-          # Color for Repo Age Badge
+          # Define the badge color for the repository age (Sunset Orange)
           AGE_BADGE_COLOR="%23FFA07A"  # Sunset Orange
 
-          # ✅ Generate Badge URL with default fallback
+          # ✅ Generate the Badge URL dynamically with the calculated repo age
           AGE_BADGE_URL="https://img.shields.io/badge/Repo%20Age-${REPO_AGE:-0Y 6M 15D}-$AGE_BADGE_COLOR?style=for-the-badge&logo=github"
 
-          # ✅ Replace Badge in README
+          # ✅ Use `sed` to replace the old badge URL with the new one in the README.md
           sed -i 's|https://img.shields.io/badge/Repo%20Age-[^?]*|'"$AGE_BADGE_URL"'|' README.md
 
+      # Step 5: Commit the changes and push them back to the repository
       - name: Commit & Push Changes
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # ✅ Uses GitHub's built-in token
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # ✅ Uses GitHub's built-in token for authentication
         run: |
+          # Configure Git with a username and email for committing changes
           git config --global user.name "github-actions"
           git config --global user.email "actions@github.com"
 
+          # Add the README.md file to the staging area
           git add README.md
+          # Commit the changes with a message; if no changes, exit gracefully
           git commit -m "Updated repository age badge (with fail-safe fallback)" || exit 0
+          # Push the changes to the 'main' branch
           git push origin main
