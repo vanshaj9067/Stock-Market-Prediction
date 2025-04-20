@@ -8,6 +8,10 @@
 # ❌ The badge is no longer standalone, but part of a full markdown block.
 # ================================================================
 
+# ================================================================
+# GitHub Actions Workflow: Update Repo Age Section (Manual Only)
+# ================================================================
+
 name: Update Repo Age
 
 on:
@@ -51,17 +55,17 @@ jobs:
 
       - name: Update README.md Repo Section
         run: |
-          NEW_SECTION="<!-- Repository Age -->
-<!-- REPO-SECTION-START -->
-<a href=\"https://github.com/madhurimarawat/Stock-Market-Prediction/actions/workflows/update-repo-age.yml\">
-  <img src=\"https://img.shields.io/badge/Repo%20Age-${REPO_AGE// /%20}-%23FFA07A?style=for-the-badge&logo=github\" alt=\"Repository Age\">
-</a>
-<!-- REPO-SECTION-END -->"
+          echo '<!-- Repository Age -->' > new_section.md
+          echo '<!-- REPO-SECTION-START -->' >> new_section.md
+          echo '<a href="https://github.com/madhurimarawat/Stock-Market-Prediction/actions/workflows/update-repo-age.yml">' >> new_section.md
+          echo '  <img src="https://img.shields.io/badge/Repo%20Age-'${REPO_AGE// /%20}'-%23FFA07A?style=for-the-badge&logo=github" alt="Repository Age">' >> new_section.md
+          echo '</a>' >> new_section.md
+          echo '<!-- REPO-SECTION-END -->' >> new_section.md
 
-          awk -v new_section="$NEW_SECTION" '
+          awk -v block="$(cat new_section.md)" '
             BEGIN { in_block=0 }
             /<!-- REPO-SECTION-START -->/ {
-              print new_section
+              print block
               in_block=1
               next
             }
