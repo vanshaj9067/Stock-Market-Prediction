@@ -75,9 +75,7 @@ This repository began as a **7th-semester minor project** and evolved into our *
   <a href="https://github.com/madhurimarawat/Stock-Market-Prediction/watchers">
     <img src="https://img.shields.io/github/watchers/madhurimarawat/Stock-Market-Prediction?color=%23FFD166&label=Watchers&labelColor=%23F4B74E&style=for-the-badge&logo=github" alt="GitHub Watchers">
   </a>
-
-  <!-- Visitors Count -->
-  <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https://github.com/madhurimarawat/Stock-Market-Prediction&count_bg=%23FFB4A2&title_bg=%23B5E48C&icon=github.svg&icon_color=%23FFFFFF&title=Visitors&edge_flat=true" alt="Visitors">
+  
 </p>
 
 ![📈 Stock Market Illustration](https://github.com/user-attachments/assets/f5751f74-43c5-4045-aa9f-bb7abd19c1aa)
