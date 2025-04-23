@@ -153,9 +153,7 @@ def predict():
                 {"success": False, "error": "Invalid input"}
             )  # Handle input errors
         except Exception as e:
-            return jsonify(
-                {"success": False, "error": str(e)}
-            )  # Handle unexpected errors
+            return jsonify({"success": False})  # Handle unexpected errors
     else:
         return jsonify(
             {"success": False, "error": "Model not found"}
