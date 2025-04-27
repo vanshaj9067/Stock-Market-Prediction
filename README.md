@@ -62,9 +62,10 @@ This repository began as a **7th-semester minor project** and evolved into our *
 
 <!-- Repository Age -->
 <!-- Repository Age -->
+<!-- Repository Age -->
 <!-- REPO-SECTION-START -->
 <a href="https://github.com/madhurimarawat/Stock-Market-Prediction/actions/workflows/update-repo-age.yml">
-  <img src="https://img.shields.io/badge/Repo%20Age-0Y%208M%2015D-%23FFA07A?style=for-the-badge&logo=github&labelColor=%235F9EA0&color=%23FA8072" alt="Repository Age">
+  <img src="https://img.shields.io/badge/Repo%20Age-0Y%208M%2022D-%23FFA07A?style=for-the-badge&logo=github&labelColor=%235F9EA0&color=%23FA8072" alt="Repository Age">
 </a>
 <!-- REPO-SECTION-END -->
 
