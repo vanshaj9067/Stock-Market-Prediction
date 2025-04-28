@@ -69,13 +69,10 @@ This repository began as a **7th-semester minor project** and evolved into our *
 </a>
 <!-- REPO-SECTION-END -->
 
-
-
 <!-- Workflow Status -->
 <a href="https://github.com/madhurimarawat/Stock-Market-Prediction/actions/workflows/update-repo-age.yml">
   <img src="https://img.shields.io/github/actions/workflow/status/madhurimarawat/Stock-Market-Prediction/update-repo-info.yml?color=%2372DDF7&label=Workflow&labelColor=%235CC1E7&style=for-the-badge&logo=github" alt="Workflow Status">
 </a>
-
 
   <!-- Watchers -->
   <a href="https://github.com/madhurimarawat/Stock-Market-Prediction/watchers">
@@ -85,6 +82,11 @@ This repository began as a **7th-semester minor project** and evolved into our *
 </p>
 
 ![📈 Stock Market Illustration](https://github.com/user-attachments/assets/f5751f74-43c5-4045-aa9f-bb7abd19c1aa)
+
+<p align=center>
+<a href="https://stock-market-numerical-text-hybrid-prediction.streamlit.app/">
+  <img src="Codes\Historical_Data_Analysis\App_Snapshots\Streamlit_App\App_Working_Real_Time_Prediction.gif" alt="💡 Real Time Prediction" title="💡 Real Time Prediction" height="300px">
+</a></p>
 
 ## Project Description
 
