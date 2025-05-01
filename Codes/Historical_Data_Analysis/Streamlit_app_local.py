@@ -70,8 +70,10 @@ DATASET_DIR = "Preprocessed_Dataset"
 # Main function to handle the selection and display of sections
 def main():
     """
-    Main function that sets up the app's navigation, displays sections based on user selection,
+    Main function that sets up the app's navigation, displays content based on user selection,
     and includes links to the GitHub repository.
+    It also presents an interactive and visually appealing sidebar with emoji-enhanced radio options
+    to enhance user engagement.
     """
     st.title("Stock Market Prediction")
 
@@ -80,27 +82,28 @@ def main():
     selected_section = st.sidebar.radio(
         "Go to",
         [
-            "Stock Market Description",
-            "Project Description",
-            "Companies",
-            "Numerical Dataset Information",
-            "Numerical Dataset Visualization",
-            "Numerical Model Evaluation",
-            "Numerical Model Visualization",
-            "Numerical Model Prediction",
-            "Text Model Evaluation",
-            "Text Model Visualization",
-            "Text Model Prediction",
-            "Hybrid Model Evaluation",
-            "Hybrid Model Visualization",
-            "Hybrid Model Prediction",
-            "InfluxDB Database",
-            "Grafana Dashboard",
-            "Flask App",
-            "PowerBI Dashboard",
-            "Real Time Prediction",
-            "Meet the Team",
-            "Resources",
+            "Stock Market Description 📈",
+            "Project Description 🧾",
+            "Companies 🏢",
+            "Numerical Dataset Information 🔢",
+            "Numerical Dataset Visualization 📊",
+            "Numerical Model Evaluation ✅",
+            "Numerical Model Visualization 📉",
+            "Numerical Model Prediction 🎯",
+            "Text Model Evaluation 🔍",
+            "Text Model Visualization 📝",
+            "Text Model Prediction 💡",
+            "Hybrid Model Evaluation ⚙️",
+            "Hybrid Model Visualization 🧮",
+            "Hybrid Model Prediction 🧠",
+            "InfluxDB Database 🗄️",
+            "Grafana Dashboard 📟",
+            "Flask App ⚗️",
+            "PowerBI Dashboard ⚡",
+            "Real Time Prediction ⏱️",
+            "Reddit Chatbot 🤖",
+            "Meet the Team 👥",
+            "Resources 📚",
         ],
     )
 
@@ -118,28 +121,28 @@ def main():
     )
 
     # Call respective functions based on the selected section
-    if selected_section == "Stock Market Description":
+    if selected_section == "Stock Market Description 📈":
         """
         Provides an introduction and overview of the stock market,
         covering key concepts and market behaviors.
         """
         display_stock_market_description()
 
-    elif selected_section == "Project Description":
+    elif selected_section == "Project Description 🧾":
         """
         Gives a concise description of the project objectives,
         methodology, and expected outcomes.
         """
         display_project_description()
 
-    elif selected_section == "Companies":
+    elif selected_section == "Companies 🏢":
         """
         Displays a table containing company data, such as stock prices and financial metrics,
         allowing users to compare different companies.
         """
         display_company_data_table()
 
-    elif selected_section == "Numerical Dataset Information":
+    elif selected_section == "Numerical Dataset Information 🔢":
         """
         Displays detailed dataset information for the selected ticker symbol.
         Users can explore the dataset using a sidebar dropdown.
@@ -150,7 +153,7 @@ def main():
         )
         display_numerical_dataset_info(ticker_symbol)
 
-    elif selected_section == "Numerical Dataset Visualization":
+    elif selected_section == "Numerical Dataset Visualization 📊":
         """
         Shows visual representations of stock data, such as price trends
         and volume analysis for the selected ticker symbol.
@@ -161,14 +164,14 @@ def main():
         )
         display_numerical_data_visualizations(ticker_symbol)
 
-    elif selected_section == "Numerical Model Evaluation":
+    elif selected_section == "Numerical Model Evaluation ✅":
         """
         Displays performance statistics for numerical models,
         including accuracy, RMSE, and other metrics.
         """
         display_numerical_model_performance()
 
-    elif selected_section == "Numerical Model Visualization":
+    elif selected_section == "Numerical Model Visualization 📉":
         """
         Provides visualizations of numerical model predictions and actual results
         to help users understand model performance.
@@ -179,7 +182,7 @@ def main():
         )
         display_numerical_model_visualization(ticker_symbol)
 
-    elif selected_section == "Numerical Model Prediction":
+    elif selected_section == "Numerical Model Prediction 🎯":
         """
         Offers a prediction feature where users can input values manually
         or select data from a dataset to predict stock closing prices.
@@ -237,70 +240,70 @@ def main():
                     ticker_symbol, open_price, high, low, volume
                 )
 
-    elif selected_section == "Text Model Evaluation":
+    elif selected_section == "Text Model Evaluation 🔍":
         """
         Displays performance metrics of the text-based model,
         including precision, recall, and F1-score.
         """
         display_text_model_performance()
 
-    elif selected_section == "Text Model Visualization":
+    elif selected_section == "Text Model Visualization 📝":
         """
         Shows visualizations related to the output of the text-based model,
         such as word clouds and sentiment analysis charts.
         """
         display_text_model_visualization()
 
-    elif selected_section == "Text Model Prediction":
+    elif selected_section == "Text Model Prediction 💡":
         """
         Provides a text-based prediction tool that analyzes sentiment
         and correlates it with stock price trends.
         """
         display_text_model_prediction()
 
-    elif selected_section == "Hybrid Model Evaluation":
+    elif selected_section == "Hybrid Model Evaluation ⚙️":
         """
         Evaluates the combined performance of numerical and text-based models,
         showing how well the hybrid approach works.
         """
         display_hybrid_model_performance()
 
-    elif selected_section == "Hybrid Model Visualization":
+    elif selected_section == "Hybrid Model Visualization 🧮":
         """
         Displays visual outputs of the hybrid model, highlighting predictions
         and actual stock price trends.
         """
         display_hybrid_model_visualization()
 
-    elif selected_section == "Hybrid Model Prediction":
+    elif selected_section == "Hybrid Model Prediction 🧠":
         """
         Predicts stock prices using a hybrid model that integrates numerical
         and text-based data for better accuracy.
         """
         display_hybrid_model_prediction()
 
-    elif selected_section == "InfluxDB Database":
+    elif selected_section == "InfluxDB Database 🗄️":
         """
         Provides an overview of the InfluxDB database setup used for storing
         and querying time-series data.
         """
         display_project_database()
 
-    elif selected_section == "Grafana Dashboard":
+    elif selected_section == "Grafana Dashboard 📟":
         """
         Displays a link or an embedded Grafana dashboard that visualizes real-time
         data monitoring for stock analysis.
         """
         display_project_dashboard()
 
-    elif selected_section == "Flask App":
+    elif selected_section == "Flask App ⚗️":
         """
         Links or embeds the Flask app, enabling users to access prediction features
         through a separate web service.
         """
         display_project_flask_app()
 
-    elif selected_section == "PowerBI Dashboard":
+    elif selected_section == "PowerBI Dashboard ⚡":
         """
         Displays a collection of plots created using Power BI for historical stock data analysis.
         The plots are hosted in the GitHub repository and dynamically rendered using Streamlit.
@@ -308,21 +311,29 @@ def main():
         """
         display_power_bi_dashboard()
 
-    elif selected_section == "Real Time Prediction":
+    elif selected_section == "Real Time Prediction ⏱️":
         """
         Displays the real-time stock prediction interface using the latest data.
         Allows users to input stock ticker symbols and view forecasted results.
         """
         display_real_time_stock_prediction()
 
-    elif selected_section == "Meet the Team":
+    elif selected_section == "Reddit Chatbot 🤖":
+        """
+        Displays the Reddit Chatbot interface that fetches real-time data using the Reddit API.
+        Allows users to interact with the chatbot, retrieve relevant discussions, and visualize
+        data trends through plots and insights gathered from Reddit posts and comments.
+        """
+        display_reddit_chatbot_visualization()
+
+    elif selected_section == "Meet the Team 👥":
         """
         Introduces the team members working on the project and provides
         their contact information.
         """
         display_contact_information()
 
-    elif selected_section == "Resources":
+    elif selected_section == "Resources 📚":
         """
         Lists resources and links relevant to the project, including stock data
         sources and illustrations.

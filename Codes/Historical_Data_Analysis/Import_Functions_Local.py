@@ -1,7 +1,7 @@
 """
 This file was auto-generated to import all functions from 'feature_functions_local/'.
 Each function file is expected to define a function named after the filename.
-Total functions imported: 22
+Total functions imported: 23
 """
 
 # === FUNCTION IMPORTS ===
@@ -45,9 +45,15 @@ from feature_functions_local.display_project_description import (
     display_project_description,
 )
 from feature_functions_local.display_project_flask_app import display_project_flask_app
+
 from feature_functions_local.display_real_time_stock_prediction import (
     display_real_time_stock_prediction,
 )
+
+from feature_functions_local.display_reddit_chatbot_visualization import (
+    display_reddit_chatbot_visualization,
+)
+
 from feature_functions_local.display_resources_information import (
     display_resources_information,
 )
@@ -64,4 +70,4 @@ from feature_functions_local.display_text_model_visualization import (
     display_text_model_visualization,
 )
 
-# ✅ Total functions imported: 22
+# ✅ Total functions imported: 23
