@@ -100,7 +100,9 @@ The **Advanced Stock Price Forecasting Using a Hybrid Model of Numerical and Tex
 
 4. **Machine Learning Models**: The project used models including Naive Bayes, MLP (Multi-Layer Perceptron), Logistic Regression, and Random Forest to process both numerical and textual data, creating a robust and comprehensive stock prediction system.
 
-5. **Collaboration and Project Management**: The repository includes contributions from all team members with well-organized tasks, ensuring seamless collaboration and effective version control.
+5. **Reddit Chatbot Data Visualization Integration**: The project involved adding static and interactive plots to represent chatbot data from Reddit, using Matplotlib and Seaborn to visualize user interactions, message frequency, and topic distribution effectively.
+
+6. **Collaboration and Project Management**: The repository includes contributions from all team members with well-organized tasks, ensuring seamless collaboration and effective version control.
 
 ## Directory Structure
 
