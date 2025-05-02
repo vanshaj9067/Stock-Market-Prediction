@@ -2,23 +2,18 @@
 Author: Madhurima Rawat
 
 Script to clean a Streamlit app by removing all top-level functions except 'main'.
+Also removes unused import statements.
 Preserves:
-- All import statements
+- All used import statements
 - Global variables
 - Top-level code (outside functions)
 - The 'main' function (if present)
-
-Removes both the function and the comment immediately above it.
 
 Saves the result as 'app_cleaned.py'.
 """
 
 import ast
-import black  # Import black for automatic Python code formatting
-
-# For Local
-# INPUT_FILE = "Streamlit_app_local_combined.py"
-# CLEANED_FILE = "Streamlit_app_local.py"
+import black
 
 # For Deployed
 INPUT_FILE = "Streamlit_app_combined.py"
@@ -31,28 +26,64 @@ with open(INPUT_FILE, "r", encoding="utf-8") as f:
 lines = source.splitlines()
 tree = ast.parse(source)
 
-# Identify non-main function lines to remove, including function header comments
+# Step 1: Remove non-main top-level functions and their header comments
 lines_to_remove = set()
 for node in tree.body:
     if isinstance(node, ast.FunctionDef) and node.name != "main":
-        # Add the function comment above it and the function itself to the removal list
         comment_line = node.lineno - 2
         if 0 <= comment_line < len(lines):
             lines_to_remove.add(comment_line)
         for i in range(node.lineno - 1, node.end_lineno):
             lines_to_remove.add(i)
 
-# Generate cleaned lines by excluding the lines marked for removal
 cleaned_lines = [line for i, line in enumerate(lines) if i not in lines_to_remove]
-
-# Join cleaned lines into a single string and format it with black
 cleaned_code = "".join(line + "\n" for line in cleaned_lines)
-formatted_code = black.format_str(cleaned_code, mode=black.FileMode())
 
-# Write the formatted code to the cleaned file
+
+# Step 2: Parse cleaned code to remove unused imports
+class ImportUsageAnalyzer(ast.NodeVisitor):
+    def __init__(self):
+        self.imports = {}
+        self.used_names = set()
+
+    def visit_Import(self, node):
+        for alias in node.names:
+            self.imports[alias.asname or alias.name] = node.lineno
+
+    def visit_ImportFrom(self, node):
+        for alias in node.names:
+            name = alias.asname or alias.name
+            self.imports[name] = node.lineno
+
+    def visit_Name(self, node):
+        self.used_names.add(node.id)
+
+
+# Analyze the cleaned code
+tree = ast.parse(cleaned_code)
+analyzer = ImportUsageAnalyzer()
+analyzer.visit(tree)
+
+# Identify unused imports
+unused_import_lines = set()
+for name, lineno in analyzer.imports.items():
+    if name not in analyzer.used_names:
+        unused_import_lines.add(lineno - 1)  # Convert to 0-based
+
+# Final clean-up: remove unused imports
+final_lines = [
+    line
+    for i, line in enumerate(cleaned_code.splitlines())
+    if i not in unused_import_lines
+]
+final_code = "".join(line + "\n" for line in final_lines)
+formatted_code = black.format_str(final_code, mode=black.FileMode())
+
+# Write the cleaned, formatted file
 with open(CLEANED_FILE, "w", encoding="utf-8") as f:
     f.write(formatted_code)
 
 print(
-    f"✅ Cleaned and formatted file saved as '{CLEANED_FILE}' (only 'main' retained, function comments removed)."
+    f"✅ Cleaned and formatted file saved as '{CLEANED_FILE}' "
+    "(only 'main' retained, unused imports and comments removed)."
 )
