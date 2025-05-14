@@ -106,24 +106,33 @@ The **Advanced Stock Price Forecasting Using a Hybrid Model of Numerical and Tex
 
 ## Directory Structure
 
-```plaintext
+```markdown
 📁 Stock-Market-Prediction/
-├── 📁 Codes/
-│   ├── 📁 Historical_Data_Analysis/
-│   ├── 📁 Partial_Data_Analysis/
-│   ├── 📁 Ticker_Symbols_Stocks/
-│   ├── 📁 Flask_App/
+├── 📁 Codes/                            # 🧠 Core code modules for analysis and app development
+│   ├── 📁 Historical_Data_Analysis/     # 📊 Scripts for long-term market trend analysis
+│   ├── 📁 Partial_Data_Analysis/        # 📉 Focused short-term or segmented data analysis
+│   ├── 📁 Ticker_Symbols_Stocks/        # 💹 Scripts for retrieving and managing ticker symbols
+│   ├── 📁 Flask_App/                    # 🌐 Web interface built using Flask framework
 │
-├── 📁 Conferences/
+├── 📁 Conferences/                      # 🎤 Presentation and academic conference materials
 │
-├── 📁 Documents/
+├── 📁 Documents/                        # 📚 Miscellaneous reports and supporting documents
+│   ├── 📁 Major_Project/                # 🏆 Final-year major project resources
+│   │   ├── 📁 PPT/                      # 📽️ Presentation slides for the major project
+│   │   ├── 📁 Proforma_&_Progress_Report/ # 📝 Official progress reports and planning forms
+│   │   └── 📁 Thesis/                   # 📖 Final thesis document with research and results
+│   │
+│   └── 📁 Minor_Project/                # 🎯 Minor-project materials
+│       ├── 📁 PPT/                      # 🧾 Slides prepared for minor project presentation
+│       ├── 📁 Proforma_&_Progress_Report/ # 📋 Progress reports and planning forms for minor project
+│       └── 📁 Thesis/                   # 📘 Final minor project report or thesis
 │
-├── 📁 Reference_Documents/
+├── 📁 Reference_Documents/             # 🔍 Research papers and helpful external references
 │
-├── 📁 Resources/
+├── 📁 Resources/                       # 🛠️ Datasets, libraries, and supporting tools
 │
-├── 📄 LICENSE
-└── 📄 README.md
+├── 📄 LICENSE                          # 📄 Terms and conditions for usage and distribution
+└── 📄 README.md                        # 📘 Overview, setup guide, and project introduction
 ```
 
 ---
@@ -282,3 +291,13 @@ Here's an overview of the Flask App:
 3. **Illustration Links:**
    - [Project Resources (Illustration 1)](https://img.freepik.com/premium-vector/flat-design-stock-market-analysis_23-2148590818.jpg)
    - [Streamlit App Background Image (Illustration 2)](https://vectormine.b-cdn.net/wp-content/uploads/Stock_Market.jpg)
+
+---
+
+## Thanks for Visiting 😄
+
+- Drop a 🌟 if you find this repository useful.<br><br>
+- If you have any doubts or suggestions, feel free to reach me.<br><br>
+📫 How to reach me:  &nbsp; [![Linkedin Badge](https://img.shields.io/badge/-madhurima-blue?style=flat&logo=Linkedin&logoColor=white)](https://www.linkedin.com/in/madhurima-rawat/) &nbsp; &nbsp;
+<a href ="mailto:rawatmadhurima@gmail.com"><img src="https://github.com/madhurimarawat/Machine-Learning-Using-Python/assets/105432776/b6a0873a-e961-42c0-8fbf-ab65828c961a" height=35 width=30 title="Mail Illustration" alt="Mail Illustration📫" > </a><br><br>
+- **Contribute and Discuss:** Feel free to open <a href= "https://github.com/madhurimarawat/Stock-Market-Prediction/issues">issues 🐛</a>, submit <a href = "https://github.com/madhurimarawat/Stock-Market-Prediction/pulls">pull requests 🛠️</a>, or start <a href = "https://github.com/madhurimarawat/Stock-Market-Prediction/discussions">discussions 💬</a> to help improve this repository!
