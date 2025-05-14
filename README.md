@@ -117,16 +117,15 @@ The **Advanced Stock Price Forecasting Using a Hybrid Model of Numerical and Tex
 ├── 📁 Conferences/                      # 🎤 Presentation and academic conference materials
 │
 ├── 📁 Documents/                        # 📚 Miscellaneous reports and supporting documents
-│
-├── 📁 Major_Project/                    # 🏆 Final-year major project resources
-│   ├── 📁 PPT/                          # 📽️ Presentation slides for the major project
-│   ├── 📁 Proforma_&_Progress_Report/   # 📝 Official progress reports and planning forms
-│   └── 📁 Thesis/                       # 📖 Final thesis document with research and results
-│
-├── 📁 Minor_Project/                    # 🎯 Minor-project materials
-│   ├── 📁 PPT/                          # 🧾 Slides prepared for minor project presentation
-│   ├── 📁 Proforma_&_Progress_Report/   # 📋 Progress reports and planning forms for minor project
-│   └── 📁 Thesis/                       # 📘 Final minor project report or thesis
+│   ├── 📁 Major_Project/                # 🏆 Final-year major project resources
+│   │   ├── 📁 PPT/                      # 📽️ Presentation slides for the major project
+│   │   ├── 📁 Proforma_&_Progress_Report/ # 📝 Official progress reports and planning forms
+│   │   └── 📁 Thesis/                   # 📖 Final thesis document with research and results
+│   │
+│   └── 📁 Minor_Project/                # 🎯 Minor-project materials
+│       ├── 📁 PPT/                      # 🧾 Slides prepared for minor project presentation
+│       ├── 📁 Proforma_&_Progress_Report/ # 📋 Progress reports and planning forms for minor project
+│       └── 📁 Thesis/                   # 📘 Final minor project report or thesis
 │
 ├── 📁 Reference_Documents/             # 🔍 Research papers and helpful external references
 │
