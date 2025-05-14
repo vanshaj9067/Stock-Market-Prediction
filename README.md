@@ -135,7 +135,20 @@ The **Advanced Stock Price Forecasting Using a Hybrid Model of Numerical and Tex
 └── 📄 README.md                        # 📘 Overview, setup guide, and project introduction
 ```
 
-> 📖 Detailed thesis reports for both major and minor projects are available under their respective `Thesis` folders in `Documents/`.
+### 📄 Thesis Reports
+
+> 📖 Major & Minor Project Reports
+> Detailed thesis reports for both major and minor projects are available under their respective [`Thesis`](Documents/Thesis/) folders in [`Documents/`](Documents/).
+
+### 🗃️ InfluxDB Setup Guide
+
+> 📖 Time-Series Data Storage & Integration
+> Step-by-step InfluxDB setup and data integration guide is available at [`Codes/Historical_Data_Analysis/InfluxDB/`](Codes/Historical_Data_Analysis/InfluxDB/).
+
+### 📊 Grafana Dashboard Guide
+
+> 📖 Visualization Dashboard Setup
+> Grafana dashboard setup and InfluxDB connection guide is available at [`Codes/Historical_Data_Analysis/Grafana_Dashboard/`](Codes/Historical_Data_Analysis/Grafana_Dashboard/).
 
 ---
 
