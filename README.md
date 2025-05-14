@@ -135,6 +135,21 @@ The **Advanced Stock Price Forecasting Using a Hybrid Model of Numerical and Tex
 └── 📄 README.md                        # 📘 Overview, setup guide, and project introduction
 ```
 
+### 📄 Thesis Reports
+
+> 📖 Major & Minor Project Reports
+> Detailed thesis reports for both major and minor projects are available under their respective [`Thesis`](Documents/Thesis/) folders in [`Documents/`](Documents/).
+
+### 🗃️ InfluxDB Setup Guide
+
+> 📖 Time-Series Data Storage & Integration
+> Step-by-step InfluxDB setup and data integration guide is available at [`Codes/Historical_Data_Analysis/InfluxDB/`](Codes/Historical_Data_Analysis/InfluxDB/).
+
+### 📊 Grafana Dashboard Guide
+
+> 📖 Visualization Dashboard Setup
+> Grafana dashboard setup and InfluxDB connection guide is available at [`Codes/Historical_Data_Analysis/Grafana_Dashboard/`](Codes/Historical_Data_Analysis/Grafana_Dashboard/).
+
 ---
 
 ## Dataset Used
@@ -297,7 +312,5 @@ Here's an overview of the Flask App:
 ## Thanks for Visiting 😄
 
 - Drop a 🌟 if you find this repository useful.<br><br>
-- If you have any doubts or suggestions, feel free to reach me.<br><br>
-📫 How to reach me:  &nbsp; [![Linkedin Badge](https://img.shields.io/badge/-madhurima-blue?style=flat&logo=Linkedin&logoColor=white)](https://www.linkedin.com/in/madhurima-rawat/) &nbsp; &nbsp;
-<a href ="mailto:rawatmadhurima@gmail.com"><img src="https://github.com/madhurimarawat/Machine-Learning-Using-Python/assets/105432776/b6a0873a-e961-42c0-8fbf-ab65828c961a" height=35 width=30 title="Mail Illustration" alt="Mail Illustration📫" > </a><br><br>
+- If you have any doubts or suggestions, feel free to reach us.<br><br>
 - **Contribute and Discuss:** Feel free to open <a href= "https://github.com/madhurimarawat/Stock-Market-Prediction/issues">issues 🐛</a>, submit <a href = "https://github.com/madhurimarawat/Stock-Market-Prediction/pulls">pull requests 🛠️</a>, or start <a href = "https://github.com/madhurimarawat/Stock-Market-Prediction/discussions">discussions 💬</a> to help improve this repository!
