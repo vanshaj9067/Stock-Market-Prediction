@@ -85,7 +85,7 @@ This repository began as a **7th-semester minor project** and evolved into our *
 
 <p align=center>
 <a href="https://stock-market-numerical-text-hybrid-prediction.streamlit.app/">
-  <img src="Codes\Historical_Data_Analysis\App_Snapshots\Streamlit_App\App_Working_Real_Time_Prediction.gif" alt="💡 Real Time Prediction" title="💡 Real Time Prediction" height="300px">
+  <img src="\Codes\Historical_Data_Analysis\App_Snapshots\Streamlit_App\App_Working_Real_Time_Prediction.gif" alt="💡 Real Time Prediction" title="💡 Real Time Prediction" height="300px">
 </a></p>
 
 ## Project Description
