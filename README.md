@@ -135,6 +135,8 @@ The **Advanced Stock Price Forecasting Using a Hybrid Model of Numerical and Tex
 └── 📄 README.md                        # 📘 Overview, setup guide, and project introduction
 ```
 
+> 📖 Detailed thesis reports for both major and minor projects are available under their respective `Thesis` folders in `Documents/`.
+
 ---
 
 ## Dataset Used
