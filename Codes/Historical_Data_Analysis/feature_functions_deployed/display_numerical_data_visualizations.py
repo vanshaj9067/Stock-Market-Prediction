@@ -8,7 +8,7 @@ import plotly.graph_objects as go
 import streamlit as st
 
 # Function to display visualizations for the selected ticker
-DATASET_DIR = 'Preprocessed_Dataset'
+DATASET_DIR = 'Codes/Historical_Data_Analysis/Preprocessed_Dataset'
 
 def display_numerical_data_visualizations(ticker):
     # Define the dataset file path
