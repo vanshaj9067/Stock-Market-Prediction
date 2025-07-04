@@ -1,16 +1,21 @@
 # Importing OS module for handling file and directory paths
 import os
+
 # Importing Pandas for data manipulation and analysis
 import pandas as pd
+
 # Importing Pickle for loading/saving pre-trained machine learning models
 import pickle
+
 # Importing Plotly for creating interactive and dynamic visual plots
 import plotly.graph_objects as go
+
 # Importing Streamlit for building the web-based interactive application framework
 import streamlit as st
 
 # Function to display visualizations for the selected ticker, including actual vs. predicted prices
-DATASET_DIR = 'Preprocessed_Dataset'
+DATASET_DIR = "Codes/Historical_Data_Analysis/Preprocessed_Dataset"
+
 
 def display_numerical_model_visualization(ticker):
     # Define the dataset and model paths

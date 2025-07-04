@@ -1,14 +1,18 @@
 # Importing OS module for handling file and directory paths
 import os
+
 # Importing Pandas for data manipulation and analysis
 import pandas as pd
+
 # Importing Plotly for creating interactive and dynamic visual plots
 import plotly.graph_objects as go
+
 # Importing Streamlit for building the web-based interactive application framework
 import streamlit as st
 
 # Function to display visualizations for the selected ticker
-DATASET_DIR = 'Codes/Historical_Data_Analysis/Preprocessed_Dataset'
+DATASET_DIR = "Codes/Historical_Data_Analysis/Preprocessed_Dataset"
+
 
 def display_numerical_data_visualizations(ticker):
     # Define the dataset file path

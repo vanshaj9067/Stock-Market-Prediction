@@ -1,14 +1,18 @@
 # Importing OS module for handling file and directory paths
 import os
+
 # Importing Pandas for data manipulation and analysis
 import pandas as pd
+
 # Importing Pickle for loading/saving pre-trained machine learning models
 import pickle
+
 # Importing Streamlit for building the web-based interactive application framework
 import streamlit as st
 
 # Define the function for displaying the model prediction
-DATASET_DIR = 'Preprocessed_Dataset'
+DATASET_DIR = "Codes/Historical_Data_Analysis/Preprocessed_Dataset"
+
 
 def display_numerical_model_predicted(ticker, open_price, high, low, volume):
     # Define dataset and model paths

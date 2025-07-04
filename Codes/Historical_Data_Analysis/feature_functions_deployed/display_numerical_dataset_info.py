@@ -1,12 +1,15 @@
 # Importing OS module for handling file and directory paths
 import os
+
 # Importing Pandas for data manipulation and analysis
 import pandas as pd
+
 # Importing Streamlit for building the web-based interactive application framework
 import streamlit as st
 
 # Function to load dataset based on ticker symbol and display its information
-DATASET_DIR = 'Preprocessed_Dataset'
+DATASET_DIR = "Codes/Historical_Data_Analysis/Preprocessed_Dataset"
+
 
 def display_numerical_dataset_info(ticker):
     # Define the dataset file path

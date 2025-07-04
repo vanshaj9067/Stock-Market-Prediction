@@ -1,22 +1,33 @@
 # Importing OS module for handling file and directory paths
 import os
+
 # Importing Pandas for data manipulation and analysis
 import pandas as pd
+
 # Importing Pickle for loading/saving pre-trained machine learning models
 import pickle
+
 # Importing Streamlit for building the web-based interactive application framework
 import streamlit as st
+
 # Text feature extraction
 from sklearn.feature_extraction.text import TfidfVectorizer
 
 # Function to predict and display the text model prediction
 
+
 def display_text_model_prediction():
     # File paths for the dataset and model
     csv_path = os.path.join(
-        "Textual_Analysis", "Dataset", "Preprocessed_Text_Dataset.csv"
+        "Codes",
+        "Historical_Data_Analysis",
+        "Textual_Analysis",
+        "Dataset",
+        "Preprocessed_Text_Dataset.csv",
     )
     model_path = os.path.join(
+        "Codes",
+        "Historical_Data_Analysis",
         "Textual_Analysis",
         "Models",
         "Classification",
@@ -61,6 +72,4 @@ def display_text_model_prediction():
         if prediction[0] == 1:
             st.success("The model predicts: Up (1)")
         else:
-            st.error(
-                "The model predicts: Down (0)"
-            )
+            st.error("The model predicts: Down (0)")

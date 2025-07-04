@@ -1,19 +1,26 @@
 # Importing OS module for handling file and directory paths
 import os
+
 # Importing Pandas for data manipulation and analysis
 import pandas as pd
+
 # Importing Pickle for loading/saving pre-trained machine learning models
 import pickle
+
 # Importing Streamlit for building the web-based interactive application framework
 import streamlit as st
+
 # Importing TextBlob for basic natural language processing tasks
 from textblob import TextBlob
 
 # Function to predict and display the stock price based on user input
 
+
 def display_hybrid_model_prediction():
     # File path for the pre-trained model
     model_path = os.path.join(
+        "Codes",
+        "Historical_Data_Analysis",
         "Hybrid_Model",
         "Models",
         "Combined",
